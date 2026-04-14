@@ -5,3 +5,5 @@ artifact-venv/
 __pycache__/
 .DS_Store
 .mypy_cache/
+myenv/
+artifact-image.tar
