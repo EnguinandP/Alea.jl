@@ -1,0 +1,44 @@
+2026-04-14T10:43:22.987 75687d0a ["-f", "LangDerivedGenerator{RBT}(Main.ColorKVTree.t,Pair{Type,Integer}[Main.ColorKVTree.t=>4,Main.Color.t=>0],0,3,true)", "Pair{MLELossConfig{RBT},Float64}[MLELossConfig{RBT}(depth,Linear())=>0.3]", "100", "0.0"]
+== Config ==
+TAG: v133_artifact
+LangDerivedGenerator{RBT}(Main.ColorKVTree.t, Pair{Type, Integer}[Main.ColorKVTree.t => 4, Main.Color.t => 0], 0, 3, true)
+Pair{MLELossConfig{RBT}, Float64}[MLELossConfig{RBT}(depth, Linear()) => 0.3]
+Epochs: 100
+Bound: 0.0
+SEED: 0
+ARGS: -f LangDerivedGenerator{RBT}(Main.ColorKVTree.t,Pair{Type,Integer}[Main.ColorKVTree.t=>4,Main.Color.t=>0],0,3,true) Pair{MLELossConfig{RBT},Float64}[MLELossConfig{RBT}(depth,Linear())=>0.3] 100 0.0
+
+Building generation computation graph...
+  2.87436875 seconds
+
+Building computation graph for MLELossConfig{RBT}(depth, Linear())...
+  2.113471166 seconds
+
+ADNodes of interest (initial):
+Dict("Frequency3_T%%4" => 0.5, "Frequency3_T%%1" => 0.5, "Frequency3_E%%4" => 0.5, "Frequency1_R%%0" => 0.5, "Frequency2_E%%0" => 0.5, "Frequency3_E%%2" => 0.5, "Frequency1_B%%0" => 0.5, "Frequency3_T%%3" => 0.5, "Frequency3_T%%2" => 0.5, "Frequency3_E%%1" => 0.5, "Frequency3_E%%3" => 0.5)
+
+Parameter values (initial):
+Dict{Var, Union{Real, AbstractMatrix{<:Real}}}(Var("Frequency3_E%%2_before_sigmoid") => 0, Var("Frequency3_T%%1_before_sigmoid") => 0, Var("Frequency1_R%%0_before_sigmoid") => 0, Var("Frequency3_T%%3_before_sigmoid") => 0, Var("Frequency3_E%%3_before_sigmoid") => 0, Var("Frequency3_E%%1_before_sigmoid") => 0, Var("Frequency3_T%%4_before_sigmoid") => 0, Var("Frequency3_T%%2_before_sigmoid") => 0, Var("Frequency1_B%%0_before_sigmoid") => 0, Var("Frequency3_E%%4_before_sigmoid") => 0, Var("Frequency2_E%%0_before_sigmoid") => 0)
+
+Saved Coq generator to /Users/francille/Loaded_dice_artifact/artifact/experiments/../tuning-output/v133_artifact/rbt/langderived/root_ty=Main.ColorKVTree.t/ty-sizes=Main.ColorKVTree.t-4-Main.Color.t-0/stack_size=0/intwidth=3/arbitrary_prims=true/mle/depth/linear/0.3/epochs=100/bound=0.0/initial_Generator.v
+
+Saving initial distribution...
+  0.026482208 seconds
+Saved metric dist to /Users/francille/Loaded_dice_artifact/artifact/experiments/../tuning-output/v133_artifact/rbt/langderived/root_ty=Main.ColorKVTree.t/ty-sizes=Main.ColorKVTree.t-4-Main.Color.t-0/stack_size=0/intwidth=3/arbitrary_prims=true/mle/depth/linear/0.3/epochs=100/bound=0.0/loss1_dist_depth_initial.csv
+
+
+ADNodes of interest (trained):
+Dict("Frequency3_T%%4" => 0.8721554916112866, "Frequency3_T%%1" => 0.22972617620194533, "Frequency3_E%%4" => 0.0029259225946277165, "Frequency1_R%%0" => 0.5, "Frequency2_E%%0" => 0.5, "Frequency3_E%%2" => 0.577129473801095, "Frequency1_B%%0" => 0.5, "Frequency3_T%%3" => 0.6527301367819434, "Frequency3_T%%2" => 0.4147487891739576, "Frequency3_E%%1" => 0.6991683019854382, "Frequency3_E%%3" => 0.3018715629384593)
+
+Parameter values (trained):
+Dict{Var, Union{Real, AbstractMatrix{<:Real}}}(Var("Frequency3_E%%2_before_sigmoid") => 0.31100058511585926, Var("Frequency3_T%%1_before_sigmoid") => -1.2098580055366028, Var("Frequency1_R%%0_before_sigmoid") => 0, Var("Frequency3_T%%3_before_sigmoid") => 0.6310615955713689, Var("Frequency3_E%%3_before_sigmoid") => -0.8384014544556943, Var("Frequency3_E%%1_before_sigmoid") => 0.8433405230631834, Var("Frequency3_T%%4_before_sigmoid") => 1.9201529768152492, Var("Frequency3_T%%2_before_sigmoid") => -0.3443681656183434, Var("Frequency1_B%%0_before_sigmoid") => 0, Var("Frequency3_E%%4_before_sigmoid") => -5.831215219590912, Var("Frequency2_E%%0_before_sigmoid") => 0)
+
+Saved Coq generator to /Users/francille/Loaded_dice_artifact/artifact/experiments/../tuning-output/v133_artifact/rbt/langderived/root_ty=Main.ColorKVTree.t/ty-sizes=Main.ColorKVTree.t-4-Main.Color.t-0/stack_size=0/intwidth=3/arbitrary_prims=true/mle/depth/linear/0.3/epochs=100/bound=0.0/trained_Generator.v
+
+Saving trained distribution...
+  0.001638167 seconds
+Saved metric dist to /Users/francille/Loaded_dice_artifact/artifact/experiments/../tuning-output/v133_artifact/rbt/langderived/root_ty=Main.ColorKVTree.t/ty-sizes=Main.ColorKVTree.t-4-Main.Color.t-0/stack_size=0/intwidth=3/arbitrary_prims=true/mle/depth/linear/0.3/epochs=100/bound=0.0/loss1_dist_depth_trained.csv
+
+
+2026-04-14T10:43:35.428
+Total time elapsed: 12 seconds, 441 milliseconds

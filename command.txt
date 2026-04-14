@@ -1,0 +1,7 @@
+exp2: RBT, uniform depth, learning rate slow (0.3)
+
+julia --project experiments/tool.jl -f \
+"LangDerivedGenerator{RBT}(Main.ColorKVTree.t,Pair{Type,Integer}[Main.ColorKVTree.t=>4,Main.Color.t=>0],0,3,true)" \
+"Pair{MLELossConfig{RBT},Float64}[MLELossConfig{RBT}(depth,Uniform())=>0.3]" \
+100 \
+0.0

@@ -1,0 +1,44 @@
+2026-04-14T10:43:30.173 75687d0a ["-f", "LangDerivedGenerator{STLC}(Main.Expr.t,Pair{Type,Integer}[Main.Expr.t=>5,Main.Typ.t=>2],0,3,true)", "Pair{MLELossConfig{STLC},Float64}[MLELossConfig{STLC}(depth,Uniform())=>0.3]", "100", "0.0"]
+== Config ==
+TAG: v133_artifact
+LangDerivedGenerator{STLC}(Main.Expr.t, Pair{Type, Integer}[Main.Expr.t => 5, Main.Typ.t => 2], 0, 3, true)
+Pair{MLELossConfig{STLC}, Float64}[MLELossConfig{STLC}(depth, Uniform()) => 0.3]
+Epochs: 100
+Bound: 0.0
+SEED: 0
+ARGS: -f LangDerivedGenerator{STLC}(Main.Expr.t,Pair{Type,Integer}[Main.Expr.t=>5,Main.Typ.t=>2],0,3,true) Pair{MLELossConfig{STLC},Float64}[MLELossConfig{STLC}(depth,Uniform())=>0.3] 100 0.0
+
+Building generation computation graph...
+  5.0286165 seconds
+
+Building computation graph for MLELossConfig{STLC}(depth, Uniform())...
+  1.589212042 seconds
+
+ADNodes of interest (initial):
+Dict("Frequency2_TFun%%2" => 0.5, "Frequency4_Var%%2" => 0.5, "Frequency2_TBool%%1" => 0.5, "Frequency4_Var%%3" => 0.5, "Frequency3_Bool%%0" => 0.5, "Frequency4_App%%4" => 0.5, "Frequency4_Bool%%3" => 0.5, "Frequency4_Var%%1" => 0.5, "Frequency3_Var%%0" => 0.5, "Frequency4_App%%2" => 0.5, "Frequency4_App%%3" => 0.5, "Frequency4_Abs%%3" => 0.5, "Frequency4_Var%%5" => 0.5, "Frequency4_Bool%%1" => 0.5, "Frequency4_Abs%%2" => 0.5, "Frequency4_Bool%%4" => 0.5, "Frequency4_Abs%%1" => 0.5, "Frequency4_Var%%4" => 0.5, "Frequency4_Bool%%2" => 0.5, "Frequency4_Bool%%5" => 0.5, "Frequency2_TFun%%1" => 0.5, "Frequency4_App%%5" => 0.5, "Frequency4_Abs%%4" => 0.5, "Frequency2_TBool%%2" => 0.5, "Frequency1_TBool%%0" => 0.5, "Frequency4_App%%1" => 0.5, "Frequency4_Abs%%5" => 0.5)
+
+Parameter values (initial):
+Dict{Var, Union{Real, AbstractMatrix{<:Real}}}(Var("Frequency2_TBool%%2_before_sigmoid") => 0, Var("Frequency2_TFun%%1_before_sigmoid") => 0, Var("Frequency4_App%%5_before_sigmoid") => 0, Var("Frequency4_Bool%%3_before_sigmoid") => 0, Var("Frequency4_Abs%%4_before_sigmoid") => 0, Var("Frequency4_App%%1_before_sigmoid") => 0, Var("Frequency4_Var%%5_before_sigmoid") => 0, Var("Frequency2_TBool%%1_before_sigmoid") => 0, Var("Frequency4_Bool%%5_before_sigmoid") => 0, Var("Frequency1_TBool%%0_before_sigmoid") => 0, Var("Frequency3_Var%%0_before_sigmoid") => 0, Var("Frequency4_App%%4_before_sigmoid") => 0, Var("Frequency4_Var%%2_before_sigmoid") => 0, Var("Frequency4_Bool%%4_before_sigmoid") => 0, Var("Frequency4_Abs%%1_before_sigmoid") => 0, Var("Frequency4_App%%2_before_sigmoid") => 0, Var("Frequency2_TFun%%2_before_sigmoid") => 0, Var("Frequency4_Abs%%5_before_sigmoid") => 0, Var("Frequency3_Bool%%0_before_sigmoid") => 0, Var("Frequency4_Var%%1_before_sigmoid") => 0, Var("Frequency4_Bool%%1_before_sigmoid") => 0, Var("Frequency4_App%%3_before_sigmoid") => 0, Var("Frequency4_Abs%%2_before_sigmoid") => 0, Var("Frequency4_Abs%%3_before_sigmoid") => 0, Var("Frequency4_Bool%%2_before_sigmoid") => 0, Var("Frequency4_Var%%3_before_sigmoid") => 0, Var("Frequency4_Var%%4_before_sigmoid") => 0)
+
+Saved Coq generator to /Users/francille/Loaded_dice_artifact/artifact/experiments/../tuning-output/v133_artifact/stlc/langderived/root_ty=Main.Expr.t/ty-sizes=Main.Expr.t-5-Main.Typ.t-2/stack_size=0/intwidth=3/arbitrary_prims=true/mle/depth/uniform/0.3/epochs=100/bound=0.0/initial_Generator.v
+
+Saving initial distribution...
+  0.095486917 seconds
+Saved metric dist to /Users/francille/Loaded_dice_artifact/artifact/experiments/../tuning-output/v133_artifact/stlc/langderived/root_ty=Main.Expr.t/ty-sizes=Main.Expr.t-5-Main.Typ.t-2/stack_size=0/intwidth=3/arbitrary_prims=true/mle/depth/uniform/0.3/epochs=100/bound=0.0/loss1_dist_depth_initial.csv
+
+
+ADNodes of interest (trained):
+Dict("Frequency2_TFun%%2" => 0.5, "Frequency4_Var%%2" => 0.5466840373522208, "Frequency2_TBool%%1" => 0.5, "Frequency4_Var%%3" => 0.44043565135207013, "Frequency3_Bool%%0" => 0.5, "Frequency4_App%%4" => 0.6607080116710047, "Frequency4_Bool%%3" => 0.44043565135207013, "Frequency4_Var%%1" => 0.6467313702060452, "Frequency3_Var%%0" => 0.5, "Frequency4_App%%2" => 0.3589300037516522, "Frequency4_App%%3" => 0.5145317135801964, "Frequency4_Abs%%3" => 0.5889046023080007, "Frequency4_Var%%5" => 0.14457721380331237, "Frequency4_Bool%%1" => 0.6467313702060451, "Frequency4_Abs%%2" => 0.529065652630951, "Frequency4_Bool%%4" => 0.2988587186552906, "Frequency4_Abs%%1" => 0.29946797787091395, "Frequency4_Var%%4" => 0.2988587186552906, "Frequency4_Bool%%2" => 0.5466840373522209, "Frequency4_Bool%%5" => 0.1445772138033123, "Frequency2_TFun%%1" => 0.5, "Frequency4_App%%5" => 0.774406250888129, "Frequency4_Abs%%4" => 0.6347487702973537, "Frequency2_TBool%%2" => 0.5, "Frequency1_TBool%%0" => 0.5, "Frequency4_App%%1" => 0.29946797787091395, "Frequency4_Abs%%5" => 0.6712943239353328)
+
+Parameter values (trained):
+Dict{Var, Union{Real, AbstractMatrix{<:Real}}}(Var("Frequency2_TBool%%2_before_sigmoid") => 0, Var("Frequency2_TFun%%1_before_sigmoid") => 0, Var("Frequency4_App%%5_before_sigmoid") => 1.2333607964385294, Var("Frequency4_Bool%%3_before_sigmoid") => -0.23939417834766488, Var("Frequency4_Abs%%4_before_sigmoid") => 0.5526438659130939, Var("Frequency4_App%%1_before_sigmoid") => -0.8498325847673186, Var("Frequency4_Var%%5_before_sigmoid") => -1.7777821170806771, Var("Frequency2_TBool%%1_before_sigmoid") => 0, Var("Frequency4_Bool%%5_before_sigmoid") => -1.777782117080678, Var("Frequency1_TBool%%0_before_sigmoid") => 0, Var("Frequency3_Var%%0_before_sigmoid") => 0, Var("Frequency4_App%%4_before_sigmoid") => 0.6664509458373422, Var("Frequency4_Var%%2_before_sigmoid") => 0.18728163565048148, Var("Frequency4_Bool%%4_before_sigmoid") => -0.8527384604393446, Var("Frequency4_Abs%%1_before_sigmoid") => -0.8498325847673186, Var("Frequency4_App%%2_before_sigmoid") => -0.580011255618387, Var("Frequency2_TFun%%2_before_sigmoid") => 0, Var("Frequency4_Abs%%5_before_sigmoid") => 0.7140449268331479, Var("Frequency3_Bool%%0_before_sigmoid") => 0, Var("Frequency4_Var%%1_before_sigmoid") => 0.6047022569593102, Var("Frequency4_Bool%%1_before_sigmoid") => 0.6047022569593093, Var("Frequency4_App%%3_before_sigmoid") => 0.058143228871689365, Var("Frequency4_Abs%%2_before_sigmoid") => 0.1163938367843778, Var("Frequency4_Abs%%3_before_sigmoid") => 0.3594389062771824, Var("Frequency4_Bool%%2_before_sigmoid") => 0.18728163565048203, Var("Frequency4_Var%%3_before_sigmoid") => -0.2393941783476651, Var("Frequency4_Var%%4_before_sigmoid") => -0.8527384604393446)
+
+Saved Coq generator to /Users/francille/Loaded_dice_artifact/artifact/experiments/../tuning-output/v133_artifact/stlc/langderived/root_ty=Main.Expr.t/ty-sizes=Main.Expr.t-5-Main.Typ.t-2/stack_size=0/intwidth=3/arbitrary_prims=true/mle/depth/uniform/0.3/epochs=100/bound=0.0/trained_Generator.v
+
+Saving trained distribution...
+  0.0415705 seconds
+Saved metric dist to /Users/francille/Loaded_dice_artifact/artifact/experiments/../tuning-output/v133_artifact/stlc/langderived/root_ty=Main.Expr.t/ty-sizes=Main.Expr.t-5-Main.Typ.t-2/stack_size=0/intwidth=3/arbitrary_prims=true/mle/depth/uniform/0.3/epochs=100/bound=0.0/loss1_dist_depth_trained.csv
+
+
+2026-04-14T10:43:47.453
+Total time elapsed: 17 seconds, 280 milliseconds

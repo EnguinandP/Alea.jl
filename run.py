@@ -410,46 +410,46 @@ def create_figure2_experiment(args: argparse.Namespace) -> Experiment:
                 "0.0"
             ],
         ),
-        "stlc_type_based_uniform": TrainingRun(
-            command=[
-                "julia", "--project", "experiments/tool.jl",
-                "-f",
-                "LangDerivedGenerator{STLC}(Main.Expr.t,Pair{Type,Integer}[Main.Expr.t=>5,Main.Typ.t=>2],0,3,true)",
-                f"Pair{{MLELossConfig{{STLC}},Float64}}[MLELossConfig{{STLC}}(depth,Uniform())=>{args.fig2_learning_rate}]",
-                str(args.fig2_epochs),
-                "0.0"
-            ]
-        ),
-        "stlc_type_based_linear": TrainingRun(
-            command=[
-                "julia", "--project", "experiments/tool.jl",
-                "-f",
-                "LangDerivedGenerator{STLC}(Main.Expr.t,Pair{Type,Integer}[Main.Expr.t=>5,Main.Typ.t=>2],0,3,true)",
-                f"Pair{{MLELossConfig{{STLC}},Float64}}[MLELossConfig{{STLC}}(depth,Linear())=>{args.fig2_learning_rate}]",
-                str(args.fig2_epochs),
-                "0.0"
-            ]
-            ),
-            "stlc_bespoke_uniform": TrainingRun(
-                command=[
-                "julia", "--project", "experiments/tool.jl",
-                "-f",
-                "LangBespokeSTLCGenerator(5,2)",
-                f"Pair{{MLELossConfig{{STLC}},Float64}}[MLELossConfig{{STLC}}(depth,Uniform())=>{args.fig2_learning_rate}]",
-                str(args.fig2_epochs),
-                "0.0"
-            ]
-        ),
-        "stlc_bespoke_linear": TrainingRun(
-            command=[
-                "julia", "--project", "experiments/tool.jl",
-                "-f",
-                "LangBespokeSTLCGenerator(5,2)",
-                f"Pair{{MLELossConfig{{STLC}},Float64}}[MLELossConfig{{STLC}}(depth,Linear())=>{args.fig2_learning_rate}]",
-                str(args.fig2_epochs),
-                "0.0"
-            ]
-        )
+        # "stlc_type_based_uniform": TrainingRun(
+        #     command=[
+        #         "julia", "--project", "experiments/tool.jl",
+        #         "-f",
+        #         "LangDerivedGenerator{STLC}(Main.Expr.t,Pair{Type,Integer}[Main.Expr.t=>5,Main.Typ.t=>2],0,3,true)",
+        #         f"Pair{{MLELossConfig{{STLC}},Float64}}[MLELossConfig{{STLC}}(depth,Uniform())=>{args.fig2_learning_rate}]",
+        #         str(args.fig2_epochs),
+        #         "0.0"
+        #     ]
+        # ),
+        # "stlc_type_based_linear": TrainingRun(
+        #     command=[
+        #         "julia", "--project", "experiments/tool.jl",
+        #         "-f",
+        #         "LangDerivedGenerator{STLC}(Main.Expr.t,Pair{Type,Integer}[Main.Expr.t=>5,Main.Typ.t=>2],0,3,true)",
+        #         f"Pair{{MLELossConfig{{STLC}},Float64}}[MLELossConfig{{STLC}}(depth,Linear())=>{args.fig2_learning_rate}]",
+        #         str(args.fig2_epochs),
+        #         "0.0"
+        #     ]
+        #     ),
+        #     "stlc_bespoke_uniform": TrainingRun(
+        #         command=[
+        #         "julia", "--project", "experiments/tool.jl",
+        #         "-f",
+        #         "LangBespokeSTLCGenerator(5,2)",
+        #         f"Pair{{MLELossConfig{{STLC}},Float64}}[MLELossConfig{{STLC}}(depth,Uniform())=>{args.fig2_learning_rate}]",
+        #         str(args.fig2_epochs),
+        #         "0.0"
+        #     ]
+        # ),
+        # "stlc_bespoke_linear": TrainingRun(
+        #     command=[
+        #         "julia", "--project", "experiments/tool.jl",
+        #         "-f",
+        #         "LangBespokeSTLCGenerator(5,2)",
+        #         f"Pair{{MLELossConfig{{STLC}},Float64}}[MLELossConfig{{STLC}}(depth,Linear())=>{args.fig2_learning_rate}]",
+        #         str(args.fig2_epochs),
+        #         "0.0"
+        #     ]
+        # )
     })
 
 def create_figure3_experiment(args: argparse.Namespace) -> Experiment:

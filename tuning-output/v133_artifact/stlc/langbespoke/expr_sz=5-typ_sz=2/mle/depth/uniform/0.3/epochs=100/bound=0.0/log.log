@@ -1,0 +1,44 @@
+2026-04-14T10:43:22.985 75687d0a ["-f", "LangBespokeSTLCGenerator(5,2)", "Pair{MLELossConfig{STLC},Float64}[MLELossConfig{STLC}(depth,Uniform())=>0.3]", "100", "0.0"]
+== Config ==
+TAG: v133_artifact
+LangBespokeSTLCGenerator(5, 2)
+Pair{MLELossConfig{STLC}, Float64}[MLELossConfig{STLC}(depth, Uniform()) => 0.3]
+Epochs: 100
+Bound: 0.0
+SEED: 0
+ARGS: -f LangBespokeSTLCGenerator(5,2) Pair{MLELossConfig{STLC},Float64}[MLELossConfig{STLC}(depth,Uniform())=>0.3] 100 0.0
+
+Building generation computation graph...
+  18.265714708 seconds
+
+Building computation graph for MLELossConfig{STLC}(depth, Uniform())...
+  19.12538475 seconds
+
+ADNodes of interest (initial):
+Dict("Frequency1_tfun%%2" => 0.5, "Backtrack2_abs%%1" => 0.5, "Backtrack2_app%%3" => 0.5, "Backtrack2_abs%%5" => 0.5, "Backtrack1_zero%%0" => 0.5, "GenBool2_true%%" => 0.5, "Backtrack2_app%%1" => 0.5, "Backtrack2_var%%2" => 0.5, "Backtrack2_abs%%4" => 0.5, "Frequency1_tfun%%1" => 0.5, "Frequency1_tbool%%1" => 0.5, "Backtrack2_app%%2" => 0.5, "Backtrack1_var%%0" => 0.5, "GenBool1_true%%" => 0.5, "Backtrack2_var%%3" => 0.5, "Backtrack2_app%%4" => 0.5, "Backtrack2_app%%5" => 0.5, "Backtrack2_var%%5" => 0.5, "Backtrack2_abs%%3" => 0.5, "Frequency1_tbool%%2" => 0.5, "Backtrack2_abs%%2" => 0.5, "Backtrack2_var%%4" => 0.5, "Backtrack2_var%%1" => 0.5)
+
+Parameter values (initial):
+Dict{Var, Union{Real, AbstractMatrix{<:Real}}}(Var("Backtrack2_app%%4_before_sigmoid") => 0, Var("Backtrack1_var%%0_before_sigmoid") => 0, Var("Backtrack2_abs%%2_before_sigmoid") => 0, Var("Backtrack2_var%%3_before_sigmoid") => 0, Var("GenBool2_true%%_before_sigmoid") => 0, Var("Backtrack2_abs%%1_before_sigmoid") => 0, Var("Backtrack2_var%%5_before_sigmoid") => 0, Var("Backtrack2_app%%1_before_sigmoid") => 0, Var("Frequency1_tbool%%1_before_sigmoid") => 0, Var("GenBool1_true%%_before_sigmoid") => 0, Var("Frequency1_tbool%%2_before_sigmoid") => 0, Var("Backtrack2_app%%2_before_sigmoid") => 0, Var("Backtrack2_var%%4_before_sigmoid") => 0, Var("Backtrack2_abs%%4_before_sigmoid") => 0, Var("Backtrack2_var%%2_before_sigmoid") => 0, Var("Backtrack2_app%%5_before_sigmoid") => 0, Var("Backtrack2_app%%3_before_sigmoid") => 0, Var("Frequency1_tfun%%2_before_sigmoid") => 0, Var("Backtrack1_zero%%0_before_sigmoid") => 0, Var("Backtrack2_abs%%5_before_sigmoid") => 0, Var("Backtrack2_abs%%3_before_sigmoid") => 0, Var("Backtrack2_var%%1_before_sigmoid") => 0, Var("Frequency1_tfun%%1_before_sigmoid") => 0)
+
+Saved Coq generator to /Users/francille/Loaded_dice_artifact/artifact/experiments/../tuning-output/v133_artifact/stlc/langbespoke/expr_sz=5-typ_sz=2/mle/depth/uniform/0.3/epochs=100/bound=0.0/initial_Generator.v
+
+Saving initial distribution...
+  19.316853 seconds
+Saved metric dist to /Users/francille/Loaded_dice_artifact/artifact/experiments/../tuning-output/v133_artifact/stlc/langbespoke/expr_sz=5-typ_sz=2/mle/depth/uniform/0.3/epochs=100/bound=0.0/loss1_dist_depth_initial.csv
+
+
+ADNodes of interest (trained):
+Dict("Frequency1_tfun%%2" => 0.6828430065944474, "Backtrack2_abs%%1" => 0.2124175855103112, "Backtrack2_app%%3" => 0.4092222385059351, "Backtrack2_abs%%5" => 0.23621104250299682, "Backtrack1_zero%%0" => 0.25288008277026963, "GenBool2_true%%" => 0.5, "Backtrack2_app%%1" => 0.18614524423782158, "Backtrack2_var%%2" => 0.8055297070358282, "Backtrack2_abs%%4" => 0.46870906971426923, "Frequency1_tfun%%1" => 0.8102680729551355, "Frequency1_tbool%%1" => 0.024394795079563117, "Backtrack2_app%%2" => 0.13700066219835766, "Backtrack1_var%%0" => 0.67110832825089, "GenBool1_true%%" => 0.5, "Backtrack2_var%%3" => 0.6273788201298789, "Backtrack2_app%%4" => 0.37508392658426404, "Backtrack2_app%%5" => 0.6889185924488751, "Backtrack2_var%%5" => 0.4999999999999998, "Backtrack2_abs%%3" => 0.43375671040539493, "Frequency1_tbool%%2" => 0.24212347597555325, "Backtrack2_abs%%2" => 0.24112677193024315, "Backtrack2_var%%4" => 0.6241762485159459, "Backtrack2_var%%1" => 0.7980639789100059)
+
+Parameter values (trained):
+Dict{Var, Union{Real, AbstractMatrix{<:Real}}}(Var("Backtrack2_app%%4_before_sigmoid") => -0.5104675530301866, Var("Backtrack1_var%%0_before_sigmoid") => 0.7132021355926086, Var("Backtrack2_abs%%2_before_sigmoid") => -1.1465119187093515, Var("Backtrack2_var%%3_before_sigmoid") => 0.5209882370221945, Var("GenBool2_true%%_before_sigmoid") => 0, Var("Backtrack2_abs%%1_before_sigmoid") => -1.31041393829906, Var("Backtrack2_var%%5_before_sigmoid") => -8.116066412683365e-16, Var("Backtrack2_app%%1_before_sigmoid") => -1.4752546653751895, Var("Frequency1_tbool%%1_before_sigmoid") => -3.6886882082917056, Var("GenBool1_true%%_before_sigmoid") => 0, Var("Frequency1_tbool%%2_before_sigmoid") => -1.141072647970936, Var("Backtrack2_app%%2_before_sigmoid") => -1.840428164380648, Var("Backtrack2_var%%4_before_sigmoid") => 0.5073124905917772, Var("Backtrack2_abs%%4_before_sigmoid") => -0.12532750698522802, Var("Backtrack2_var%%2_before_sigmoid") => 1.4212206661895372, Var("Backtrack2_app%%5_before_sigmoid") => 0.7950684722979028, Var("Backtrack2_app%%3_before_sigmoid") => -0.36718152970423706, Var("Frequency1_tfun%%2_before_sigmoid") => 0.7668680759570542, Var("Backtrack1_zero%%0_before_sigmoid") => -1.0833103087979086, Var("Backtrack2_abs%%5_before_sigmoid") => -1.173565864046087, Var("Backtrack2_abs%%3_before_sigmoid") => -0.26654002430480955, Var("Backtrack2_var%%1_before_sigmoid") => 1.374237848353458, Var("Frequency1_tfun%%1_before_sigmoid") => 1.4517529815796353)
+
+Saved Coq generator to /Users/francille/Loaded_dice_artifact/artifact/experiments/../tuning-output/v133_artifact/stlc/langbespoke/expr_sz=5-typ_sz=2/mle/depth/uniform/0.3/epochs=100/bound=0.0/trained_Generator.v
+
+Saving trained distribution...
+  17.479906625 seconds
+Saved metric dist to /Users/francille/Loaded_dice_artifact/artifact/experiments/../tuning-output/v133_artifact/stlc/langbespoke/expr_sz=5-typ_sz=2/mle/depth/uniform/0.3/epochs=100/bound=0.0/loss1_dist_depth_trained.csv
+
+
+2026-04-14T10:50:05.916
+Total time elapsed: 6 minutes, 42 seconds, 931 milliseconds
