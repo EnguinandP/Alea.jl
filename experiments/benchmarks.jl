@@ -563,6 +563,7 @@ alwaysTrue(t) = true
 isRBT(t) = satisfies_bookkeeping_invariant(t) && satisfies_balance_invariant(t) && satisfies_order_invariant(t)
 isRBTdist(t) = satisfies_bookkeeping_invariant(t) & satisfies_balance_invariant(t) & satisfies_order_invariant(t)
 isBST(t) = satisfies_order_invariant(t)
+isST(t) = satisfies_stickyness(t)
 function wellTyped(e::OptExpr.t)
     @assert isdeterministic(e)
     @match e [

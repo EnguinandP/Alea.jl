@@ -400,16 +400,16 @@ def create_figure2_experiment(args: argparse.Namespace) -> Experiment:
                 "0.0"
             ],
         ),
-        "rbt_type_based_linear": TrainingRun(
-            command=[
-                "julia", "--project", "experiments/tool.jl",
-                "-f",
-                "LangDerivedGenerator{RBT}(Main.ColorKVTree.t,Pair{Type,Integer}[Main.ColorKVTree.t=>4,Main.Color.t=>0],0,3,true)",
-                f"Pair{{MLELossConfig{{RBT}},Float64}}[MLELossConfig{{RBT}}(depth,Linear())=>{args.fig2_learning_rate}]",
-                str(args.fig2_epochs),
-                "0.0"
-            ],
-        ),
+        # "rbt_type_based_linear": TrainingRun(
+        #     command=[
+        #         "julia", "--project", "experiments/tool.jl",
+        #         "-f",
+        #         "LangDerivedGenerator{RBT}(Main.ColorKVTree.t,Pair{Type,Integer}[Main.ColorKVTree.t=>4,Main.Color.t=>0],0,3,true)",
+        #         f"Pair{{MLELossConfig{{RBT}},Float64}}[MLELossConfig{{RBT}}(depth,Linear())=>{args.fig2_learning_rate}]",
+        #         str(args.fig2_epochs),
+        #         "0.0"
+        #     ],
+        # ),
         # "stlc_type_based_uniform": TrainingRun(
         #     command=[
         #         "julia", "--project", "experiments/tool.jl",

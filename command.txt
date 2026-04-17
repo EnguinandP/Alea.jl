@@ -8,7 +8,7 @@ julia --project experiments/tool.jl -f \
 
 
 
-stickiness
+stickiness - validity
 
 julia --project experiments/tool.jl -f \
   "LangSiblingDerivedGenerator{ST}(Main.sKVTree.t,Pair{Type,Integer}[Main.sKVTree.t=>4],2,3)" \
@@ -23,3 +23,13 @@ P(leaf) = 88
 P(Node) = 10
 
 So so that means there are 88/ (88 + 10) = 89% leaves
+
+
+
+
+stickiness - specification entropy
+
+julia --project experiments/tool.jl -f \
+  "LangSiblingDerivedGenerator{ST}(Main.sKVTree.t,Pair{Type,Integer}[Main.sKVTree.t=>4],2,3)" \
+  "Pair{SpecEntropy{ST},Float64}[SpecEntropy{ST}(2,200,isST)=>0.3]" \
+  2000 0.1
