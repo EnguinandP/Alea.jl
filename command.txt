@@ -5,3 +5,21 @@ julia --project experiments/tool.jl -f \
 "Pair{MLELossConfig{RBT},Float64}[MLELossConfig{RBT}(depth,Uniform())=>0.3]" \
 100 \
 0.0
+
+
+
+stickiness
+
+julia --project experiments/tool.jl -f \
+  "LangSiblingDerivedGenerator{ST}(Main.sKVTree.t,Pair{Type,Integer}[Main.sKVTree.t=>4],2,3)" \
+  "Pair{SatisfyPropertyLoss{ST},Float64}[SatisfyPropertyLoss{ST}(satisfies_stickyness)=>0.03]" \
+  2000 0.1
+
+loss after training = 0.1077319907776113
+P(stickiness) = 0.89786820114
+
+The tuning: 
+P(leaf) = 88
+P(Node) = 10
+
+So so that means there are 88/ (88 + 10) = 89% leaves

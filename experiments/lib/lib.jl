@@ -25,6 +25,7 @@ abstract type STLC <: Workload end
 abstract type BST <: Workload end
 abstract type RBT <: Workload end
 abstract type Bools{W} <: Workload end
+abstract type ST <: Workload end
 
 module Nat
     using Dice
@@ -50,6 +51,7 @@ include("stlc.jl")
 include("rbt.jl")
 include("bst.jl")
 include("derive.jl")
+include("st.jl")
 
 flatten = Iterators.flatten
 

@@ -346,3 +346,18 @@ Definition test_prop_DeleteDelete :=
           "
     )
 end
+
+function sandwich(::Type{ST})
+    (
+        "Require Import ZArith.
+From QuickChick Require Import QuickChick.
+From ExtLib Require Import Monad.
+From ExtLib.Data.Monads Require Import OptionMonad.
+Import QcNotation.
+Import MonadNotation.
+From Coq Require Import List.
+Import ListNotations.
+
+          "
+    )
+end
