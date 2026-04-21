@@ -216,6 +216,8 @@ Definition gSized :=
 
 Check gSized.
 
+Compute gSized.
+
 Sample gSized.
 (* Compute (QuickChick.Generators.run (resize 4 gSized) 4 QuickChick.RandomQC.newRandomSeed). *)
 (* Sample (resize 4 gSized). *)
