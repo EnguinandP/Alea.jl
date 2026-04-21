@@ -1,0 +1,33 @@
+2026-04-17T15:31:45.701 691f7481 ["-f", "LangSiblingDerivedGenerator{ST}(Main.sKVTree.t,Pair{Type,Integer}[Main.sKVTree.t=>1],3,3)", "Pair{SpecEntropy{ST},Float64}[SpecEntropy{ST}(2,200,isST)=>0.3]", "2000", "0.1"]
+== Config ==
+TAG: v133_artifact
+LangSiblingDerivedGenerator{ST}(Main.sKVTree.t, Pair{Type, Integer}[Main.sKVTree.t => 1], 3, 3)
+Pair{SpecEntropy{ST}, Float64}[SpecEntropy{ST}(2, 200, isST) => 0.3]
+Epochs: 2000
+Bound: 0.1
+SEED: 0
+ARGS: -f LangSiblingDerivedGenerator{ST}(Main.sKVTree.t,Pair{Type,Integer}[Main.sKVTree.t=>1],3,3) Pair{SpecEntropy{ST},Float64}[SpecEntropy{ST}(2,200,isST)=>0.3] 2000 0.1
+
+Building generation computation graph...
+  4.957042667 seconds
+
+ADNodes of interest (initial):
+Dict("Frequency2_1%%0%0%0" => 0.5, "Frequency1_1%%" => 0.5, "GenNat1_num4%%0%0%0" => 0.5, "GenNat1_num2%%0%0%0" => 0.5, "Frequency1_2%%" => 0.5, "GenNat1_num1%%0%0%0" => 0.5)
+
+Parameter values (initial):
+Dict{Var, Union{Real, AbstractMatrix{<:Real}}}(Var("GenNat1_num1%%0%0%0_before_sigmoid") => 0, Var("Frequency1_1%%_before_sigmoid") => 0, Var("GenNat1_num2%%0%0%0_before_sigmoid") => 0, Var("GenNat1_num4%%0%0%0_before_sigmoid") => 0, Var("Frequency1_2%%_before_sigmoid") => 0, Var("Frequency2_1%%0%0%0_before_sigmoid") => 0)
+
+Saved Coq generator to /Users/francille/Loaded_dice_artifact/artifact/experiments/../tuning-output/v133_artifact/st/langsiblingderived/root_ty=Main.sKVTree.t/ty-sizes=Main.sKVTree.t-1/stack_size=3/intwidth=3/spec_entropy/freq=2-spb=200/prop=isST/0.3/epochs=2000/bound=0.1/initial_Generator.v
+
+
+ADNodes of interest (trained):
+Dict("Frequency2_1%%0%0%0" => 0.5, "Frequency1_1%%" => 0.8868676236627789, "GenNat1_num4%%0%0%0" => 0.5, "GenNat1_num2%%0%0%0" => 0.5, "Frequency1_2%%" => 0.10000000000000002, "GenNat1_num1%%0%0%0" => 0.5)
+
+Parameter values (trained):
+Dict{Var, Union{Real, AbstractMatrix{<:Real}}}(Var("GenNat1_num1%%0%0%0_before_sigmoid") => 0, Var("Frequency1_1%%_before_sigmoid") => 2.059137125571409, Var("GenNat1_num2%%0%0%0_before_sigmoid") => 0, Var("GenNat1_num4%%0%0%0_before_sigmoid") => 0, Var("Frequency1_2%%_before_sigmoid") => -2.197224577336219, Var("Frequency2_1%%0%0%0_before_sigmoid") => 0)
+
+Saved Coq generator to /Users/francille/Loaded_dice_artifact/artifact/experiments/../tuning-output/v133_artifact/st/langsiblingderived/root_ty=Main.sKVTree.t/ty-sizes=Main.sKVTree.t-1/stack_size=3/intwidth=3/spec_entropy/freq=2-spb=200/prop=isST/0.3/epochs=2000/bound=0.1/trained_Generator.v
+
+
+2026-04-17T15:32:13.394
+Total time elapsed: 27 seconds, 693 milliseconds

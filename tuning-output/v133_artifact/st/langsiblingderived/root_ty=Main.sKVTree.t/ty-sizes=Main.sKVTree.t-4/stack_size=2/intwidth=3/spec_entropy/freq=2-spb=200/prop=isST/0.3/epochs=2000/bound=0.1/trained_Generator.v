@@ -1,11 +1,20 @@
-R
+Require Import ZArith.
+From QuickChick Require Import QuickChick.
+From ExtLib Require Import Monad.
+From ExtLib.Data.Monads Require Import OptionMonad.
+Import QcNotation.
+Import MonadNotation.
+From Coq Require Import List.
+Import ListNotations.
 
-Inductive LeafCtorTree :=
-  | LeafCtorTree_Leaf.
+          
 
 Inductive CtorTree :=
   | CtorTree_Leaf
   | CtorTree_Node.
+
+Inductive LeafCtorTree :=
+  | LeafCtorTree_Leaf.
 
 Inductive TupLeafCtorTreeLeafCtorTree :=
   | MkLeafCtorTreeLeafCtorTree : LeafCtorTree -> LeafCtorTree -> TupLeafCtorTreeLeafCtorTree.
@@ -201,4 +210,4 @@ Definition gSized :=
     (returnGen CtorTree_Node))]) 
   (fun init_ctor => (genTree 3 init_ctor 0 0))).
 
-e
+

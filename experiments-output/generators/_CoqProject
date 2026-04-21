@@ -1,0 +1,3 @@
+-R . Generators
+-R "/Users/francille/Loaded_dice_artifact/artifact/lib/QuickChick/src" QuickChick
+-I /Users/francille/Loaded_dice_artifact/artifact/lib/QuickChick/plugin

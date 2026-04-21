@@ -27,9 +27,22 @@ So so that means there are 88/ (88 + 10) = 89% leaves
 
 
 
-stickiness - specification entropy
+stickyness - specification entropy
 
 julia --project experiments/tool.jl -f \
-  "LangSiblingDerivedGenerator{ST}(Main.sKVTree.t,Pair{Type,Integer}[Main.sKVTree.t=>4],2,3)" \
+  "LangSiblingDerivedGenerator{ST}(Main.sKVTree.t,Pair{Type,Integer}[Main.sKVTree.t=>4],1,3)" \
   "Pair{SpecEntropy{ST},Float64}[SpecEntropy{ST}(2,200,isST)=>0.3]" \
+  2000 0.1
+
+
+
+stickyness - entropy
+julia --project experiments/tool.jl -f \
+  "LangSiblingDerivedGenerator{ST}(Main.sKVTree.t,Pair{Type,Integer}[Main.sKVTree.t=>4],2,3)" \
+  "Pair{SpecEntropy{ST},Float64}[SpecEntropy{ST}(2,200,always_true)=>0.3]" \
+  2000 0.1
+
+julia --project experiments/tool.jl -f \
+  "LangDerivedGenerator{RBT}(Main.ColorKVTree.t,Pair{Type,Integer}[Main.ColorKVTree.t=>4],1,3)" \
+  "Pair{SpecEntropy{RBT},Float64}[SpecEntropy{RBT}(2,200,isRBT)=>0.3]" \
   2000 0.1
