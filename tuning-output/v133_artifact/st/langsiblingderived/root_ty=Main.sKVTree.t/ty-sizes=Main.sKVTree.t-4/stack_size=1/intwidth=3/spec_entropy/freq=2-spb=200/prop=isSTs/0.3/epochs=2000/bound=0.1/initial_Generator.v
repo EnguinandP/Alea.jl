@@ -16,11 +16,11 @@ Inductive CtorTree :=
   | CtorTree_E
   | CtorTree_T.
 
-Inductive TupLeafCtorTreeLeafCtorTree :=
-  | MkLeafCtorTreeLeafCtorTree : LeafCtorTree -> LeafCtorTree -> TupLeafCtorTreeLeafCtorTree.
-
 Inductive TupCtorTreeCtorTree :=
   | MkCtorTreeCtorTree : CtorTree -> CtorTree -> TupCtorTreeCtorTree.
+
+Inductive TupLeafCtorTreeLeafCtorTree :=
+  | MkLeafCtorTreeLeafCtorTree : LeafCtorTree -> LeafCtorTree -> TupLeafCtorTreeLeafCtorTree.
 
 Definition genLeafTree (chosen_ctor : LeafCtorTree) (stack1 : nat) : G (Tree) :=
   match chosen_ctor with

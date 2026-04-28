@@ -215,6 +215,7 @@ Definition gSized :=
   (fun init_ctor => (genTree 3 init_ctor 0 0))).
 
 Check gSized.
+Check genTree.
 
 Compute gSized.
 

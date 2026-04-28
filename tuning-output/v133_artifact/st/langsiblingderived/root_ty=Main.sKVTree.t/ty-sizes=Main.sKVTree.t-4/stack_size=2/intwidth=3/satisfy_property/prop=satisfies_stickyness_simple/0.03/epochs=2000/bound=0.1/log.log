@@ -1,0 +1,14 @@
+2026-04-21T15:12:09.851 4915a6c1 ["-f", "LangSiblingDerivedGenerator{ST}(Main.sKVTree.t,Pair{Type,Integer}[Main.sKVTree.t=>4],2,3)", "Pair{SatisfyPropertyLoss{ST},Float64}[SatisfyPropertyLoss{ST}(satisfies_stickyness_simple)=>0.03]", "2000", "0.1"]
+== Config ==
+TAG: v133_artifact
+LangSiblingDerivedGenerator{ST}(Main.sKVTree.t, Pair{Type, Integer}[Main.sKVTree.t => 4], 2, 3)
+Pair{SatisfyPropertyLoss{ST}, Float64}[SatisfyPropertyLoss{ST}(satisfies_stickyness_simple) => 0.03]
+Epochs: 2000
+Bound: 0.1
+SEED: 0
+ARGS: -f LangSiblingDerivedGenerator{ST}(Main.sKVTree.t,Pair{Type,Integer}[Main.sKVTree.t=>4],2,3) Pair{SatisfyPropertyLoss{ST},Float64}[SatisfyPropertyLoss{ST}(satisfies_stickyness_simple)=>0.03] 2000 0.1
+
+Building generation computation graph...
+  5.363237084 seconds
+
+Building computation graph for SatisfyPropertyLoss{ST}(satisfies_stickyness_simple)...

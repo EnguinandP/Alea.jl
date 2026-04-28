@@ -10,11 +10,11 @@ Import ListNotations.
           
 
 Inductive CtorTree :=
-  | CtorTree_Leaf
-  | CtorTree_Node.
+  | CtorTree_E
+  | CtorTree_T.
 
 Inductive LeafCtorTree :=
-  | LeafCtorTree_Leaf.
+  | LeafCtorTree_E.
 
 Inductive TupCtorTreeCtorTree :=
   | MkCtorTreeCtorTree : CtorTree -> CtorTree -> TupCtorTreeCtorTree.
@@ -24,19 +24,19 @@ Inductive TupLeafCtorTreeLeafCtorTree :=
 
 Definition genLeafTree (chosen_ctor : LeafCtorTree) (stack1 : nat) : G (Tree) :=
   match chosen_ctor with
-  | LeafCtorTree_Leaf => 
-    (returnGen (Leaf ))
+  | LeafCtorTree_E => 
+    (returnGen (E ))
   end.
 
 Fixpoint genTree (size : nat) (chosen_ctor : CtorTree) (stack1 : nat) : G (Tree) :=
   match size with
   | O  => match chosen_ctor with
-    | CtorTree_Leaf => 
-      (returnGen (Leaf ))
-    | CtorTree_Node => 
+    | CtorTree_E => 
+      (returnGen (E ))
+    | CtorTree_T => 
       (bindGen 
       (* Frequency2 (single-branch) *) 
-      (returnGen (MkLeafCtorTreeLeafCtorTree LeafCtorTree_Leaf LeafCtorTree_Leaf)) 
+      (returnGen (MkLeafCtorTreeLeafCtorTree LeafCtorTree_E LeafCtorTree_E)) 
       (fun param_variantis => (let '(MkLeafCtorTreeLeafCtorTree ctor1 ctor2) := param_variantis in
 
         (bindGen 
@@ -78,12 +78,12 @@ Fixpoint genTree (size : nat) (chosen_ctor : CtorTree) (stack1 : nat) : G (Tree)
           (fun p2 => 
             (bindGen (genLeafTree ctor2 3) 
             (fun p3 => 
-              (returnGen (Node p1 p2 p3)))))))))))
+              (returnGen (T p1 p2 p3)))))))))))
     end
   | S size1 => match chosen_ctor with
-    | CtorTree_Leaf => 
-      (returnGen (Leaf ))
-    | CtorTree_Node => 
+    | CtorTree_E => 
+      (returnGen (E ))
+    | CtorTree_T => 
       (bindGen 
       (* Frequency3 *) (freq [
         (* 1 *) (match (size, stack1) with
@@ -94,7 +94,7 @@ Fixpoint genTree (size : nat) (chosen_ctor : CtorTree) (stack1 : nat) : G (Tree)
         | (3, 0) => 50
         | _ => 500
         end,
-        (returnGen (MkCtorTreeCtorTree CtorTree_Leaf CtorTree_Leaf))); 
+        (returnGen (MkCtorTreeCtorTree CtorTree_E CtorTree_E))); 
         (* 2 *) (match (size, stack1) with
         | (1, 2) => 50
         | (1, 4) => 50
@@ -103,7 +103,7 @@ Fixpoint genTree (size : nat) (chosen_ctor : CtorTree) (stack1 : nat) : G (Tree)
         | (3, 0) => 50
         | _ => 500
         end,
-        (returnGen (MkCtorTreeCtorTree CtorTree_Node CtorTree_Leaf))); 
+        (returnGen (MkCtorTreeCtorTree CtorTree_T CtorTree_E))); 
         (* 3 *) (match (size, stack1) with
         | (1, 2) => 50
         | (1, 4) => 50
@@ -112,7 +112,7 @@ Fixpoint genTree (size : nat) (chosen_ctor : CtorTree) (stack1 : nat) : G (Tree)
         | (3, 0) => 50
         | _ => 500
         end,
-        (returnGen (MkCtorTreeCtorTree CtorTree_Leaf CtorTree_Node))); 
+        (returnGen (MkCtorTreeCtorTree CtorTree_E CtorTree_T))); 
         (* 4 *) (match (size, stack1) with
         | (1, 2) => 50
         | (1, 4) => 50
@@ -121,7 +121,7 @@ Fixpoint genTree (size : nat) (chosen_ctor : CtorTree) (stack1 : nat) : G (Tree)
         | (3, 0) => 50
         | _ => 500
         end,
-        (returnGen (MkCtorTreeCtorTree CtorTree_Node CtorTree_Node)))]) 
+        (returnGen (MkCtorTreeCtorTree CtorTree_T CtorTree_T)))]) 
       (fun param_variantis => (let '(MkCtorTreeCtorTree ctor1 ctor2) := param_variantis in
 
         (bindGen 
@@ -172,7 +172,7 @@ Fixpoint genTree (size : nat) (chosen_ctor : CtorTree) (stack1 : nat) : G (Tree)
           (fun p2 => 
             (bindGen (genTree size1 ctor2 4) 
             (fun p3 => 
-              (returnGen (Node p1 p2 p3)))))))))))
+              (returnGen (T p1 p2 p3)))))))))))
     end
   end.
 
@@ -183,11 +183,11 @@ Definition gSized :=
     (* 1 *) (match (tt) with
     | tt => 89
     end,
-    (returnGen CtorTree_Leaf)); 
+    (returnGen CtorTree_E)); 
     (* 2 *) (match (tt) with
     | tt => 10
     end,
-    (returnGen CtorTree_Node))]) 
+    (returnGen CtorTree_T))]) 
   (fun init_ctor => (genTree 3 init_ctor 0))).
 
 

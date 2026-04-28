@@ -9,18 +9,18 @@ Import ListNotations.
 
           
 
-Inductive LeafCtorTree :=
-  | LeafCtorTree_E.
-
 Inductive CtorTree :=
   | CtorTree_E
   | CtorTree_T.
 
-Inductive TupLeafCtorTreeLeafCtorTree :=
-  | MkLeafCtorTreeLeafCtorTree : LeafCtorTree -> LeafCtorTree -> TupLeafCtorTreeLeafCtorTree.
+Inductive LeafCtorTree :=
+  | LeafCtorTree_E.
 
 Inductive TupCtorTreeCtorTree :=
   | MkCtorTreeCtorTree : CtorTree -> CtorTree -> TupCtorTreeCtorTree.
+
+Inductive TupLeafCtorTreeLeafCtorTree :=
+  | MkLeafCtorTreeLeafCtorTree : LeafCtorTree -> LeafCtorTree -> TupLeafCtorTreeLeafCtorTree.
 
 Definition genLeafTree (chosen_ctor : LeafCtorTree) (stack1 : nat) : G (Tree) :=
   match chosen_ctor with
@@ -71,8 +71,18 @@ Fixpoint genTree (size : nat) (chosen_ctor : CtorTree) (stack1 : nat) : G (Tree)
           (_weight_4, returnGen 4);
           (100-_weight_4, returnGen 0)
         ]) (fun n4 =>
-          returnGen (n1 + n2 + n4)
-        )))))) 
+        (let _weight_8 := match (stack1) with
+        | (2) => 50
+        | (4) => 50
+        | _ => 500
+        end
+        in
+        bindGen (freq [
+          (_weight_8, returnGen 8);
+          (100-_weight_8, returnGen 0)
+        ]) (fun n8 =>
+          returnGen (n1 + n2 + n4 + n8)
+        )))))))) 
         (fun p1 => 
           (bindGen (genLeafTree ctor1 1) 
           (fun p2 => 
@@ -165,8 +175,21 @@ Fixpoint genTree (size : nat) (chosen_ctor : CtorTree) (stack1 : nat) : G (Tree)
           (_weight_4, returnGen 4);
           (100-_weight_4, returnGen 0)
         ]) (fun n4 =>
-          returnGen (n1 + n2 + n4)
-        )))))) 
+        (let _weight_8 := match (size, stack1) with
+        | (1, 2) => 50
+        | (1, 4) => 50
+        | (2, 2) => 50
+        | (2, 4) => 50
+        | (3, 0) => 50
+        | _ => 500
+        end
+        in
+        bindGen (freq [
+          (_weight_8, returnGen 8);
+          (100-_weight_8, returnGen 0)
+        ]) (fun n8 =>
+          returnGen (n1 + n2 + n4 + n8)
+        )))))))) 
         (fun p1 => 
           (bindGen (genTree size1 ctor1 2) 
           (fun p2 => 

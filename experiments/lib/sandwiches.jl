@@ -358,6 +358,35 @@ Import MonadNotation.
 From Coq Require Import List.
 Import ListNotations.
 
-          ", ""
+Inductive Tree :=
+  | E : Tree 
+  | T : nat -> Tree -> Tree -> Tree.
+
+          ", "
+Fixpoint is_sticky (t : Tree) : bool :=
+  match t with 
+  | T _ (T _ _ _) (T _ _ _) => false
+  | T _ l r => is_sticky r && is_sticky l 
+  | E => true 
+  end.
+
+#[export] Instance genTreeInst : Gen Tree := {| arbitrary := gSized |}.
+#[export] Instance shrinkTree : Shrink Tree := {| shrink := fun _ => [] |}.
+#[export] Instance arbTree : Arbitrary Tree := {}.
+
+Derive (Show) for Tree. 
+
+Definition test_is_sticky := forAll gSized (fun t : Tree => is_sticky t).
+
+QuickChick test_is_sticky.
+
+Definition numRuns := 1000.
+
+Definition count_sticky :=
+  forAll gSized (fun t : Tree =>
+    collect (if is_sticky t then true else false) true).
+
+QuickChickWith (updMaxSuccess stdArgs numRuns) count_sticky.
+          "
     )
 end

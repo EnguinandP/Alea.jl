@@ -1,0 +1,763 @@
+DIGEST 319a0d2cd87e6686327a228317a50ef6
+Ftrained_Generator
+R15:20 Coq.ZArith.ZArith <> <> lib
+R54:63 QuickChick.QuickChick <> <> lib
+R93:97 ExtLib.Structures.Monad <> <> lib
+R139:149 ExtLib.Data.Monads.OptionMonad <> <> lib
+R159:168 QuickChick.Checker QcNotation <> mod
+R178:190 ExtLib.Structures.Monad MonadNotation <> mod
+R217:220 Coq.Lists.List <> <> lib
+R230:242 Coq.Lists.List ListNotations <> mod
+ind 256:259 <> Tree
+constr 268:268 <> E
+constr 282:282 <> T
+R272:275 trained_Generator <> Tree:1 ind
+R289:292 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R286:288 Coq.Init.Datatypes <> nat ind
+R297:300 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R293:296 trained_Generator <> Tree:1 ind
+R305:308 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R301:304 trained_Generator <> Tree:1 ind
+R309:312 trained_Generator <> Tree:1 ind
+ind 327:334 <> CtorTree
+constr 343:352 <> CtorTree_E
+constr 358:367 <> CtorTree_T
+ind 381:392 <> LeafCtorTree
+constr 401:414 <> LeafCtorTree_E
+ind 428:446 <> TupCtorTreeCtorTree
+constr 455:472 <> MkCtorTreeCtorTree
+R484:487 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R476:483 trained_Generator <> CtorTree ind
+R496:499 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R488:495 trained_Generator <> CtorTree ind
+R500:518 trained_Generator <> TupCtorTreeCtorTree:7 ind
+ind 532:558 <> TupLeafCtorTreeLeafCtorTree
+constr 567:592 <> MkLeafCtorTreeLeafCtorTree
+R608:611 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R596:607 trained_Generator <> LeafCtorTree ind
+R624:627 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R612:623 trained_Generator <> LeafCtorTree ind
+R628:654 trained_Generator <> TupLeafCtorTreeLeafCtorTree:9 ind
+def 669:679 <> genLeafTree
+R696:707 trained_Generator <> LeafCtorTree ind
+binder 682:692 <> chosen_ctor:11
+R720:722 Coq.Init.Datatypes <> nat ind
+binder 711:716 <> stack1:12
+R727:727 QuickChick.Generators <> G def
+R730:733 trained_Generator <> Tree ind
+R747:757 trained_Generator <> chosen_ctor:11 var
+R768:781 trained_Generator <> LeafCtorTree_E constr
+R792:800 QuickChick.Generators <> returnGen def
+R803:803 trained_Generator <> E constr
+def 825:831 <> genTree
+R841:843 Coq.Init.Datatypes <> nat ind
+binder 834:837 <> size:14
+R861:868 trained_Generator <> CtorTree ind
+binder 847:857 <> chosen_ctor:15
+R881:883 Coq.Init.Datatypes <> nat ind
+binder 872:877 <> stack1:16
+R888:888 QuickChick.Generators <> G def
+R891:894 trained_Generator <> Tree ind
+R908:911 trained_Generator <> size:14 var
+R922:922 Coq.Init.Datatypes <> O constr
+R934:944 trained_Generator <> chosen_ctor:15 var
+R957:966 trained_Generator <> CtorTree_E constr
+R979:987 QuickChick.Generators <> returnGen def
+R990:990 trained_Generator <> E constr
+R1001:1010 trained_Generator <> CtorTree_T constr
+R1023:1029 QuickChick.Generators <> bindGen def
+binder 1161:1175 <> param_variantis:20
+R1230:1244 trained_Generator <> param_variantis:20 var
+R1187:1212 trained_Generator <> MkLeafCtorTreeLeafCtorTree constr
+R1259:1265 QuickChick.Generators <> bindGen def
+binder 2101:2102 <> p1:22
+R2119:2125 QuickChick.Generators <> bindGen def
+binder 2165:2166 <> p2:23
+R2185:2191 QuickChick.Generators <> bindGen def
+binder 2233:2234 <> p3:24
+R2255:2263 QuickChick.Generators <> returnGen def
+R2266:2266 trained_Generator <> T constr
+R2268:2269 trained_Generator <> p1:22 var
+R2271:2272 trained_Generator <> p2:23 var
+R2274:2275 trained_Generator <> p3:24 var
+R2194:2204 trained_Generator <> genLeafTree def
+R2128:2138 trained_Generator <> genLeafTree def
+R1323:1328 trained_Generator <> stack1:16 var
+binder 1303:1311 <> _weight_1:26
+R1426:1432 QuickChick.Generators <> bindGen def
+binder 1533:1534 <> n1:27
+R1572:1577 trained_Generator <> stack1:16 var
+binder 1552:1560 <> _weight_2:29
+R1675:1681 QuickChick.Generators <> bindGen def
+binder 1782:1783 <> n2:30
+R1821:1826 trained_Generator <> stack1:16 var
+binder 1801:1809 <> _weight_4:32
+R1924:1930 QuickChick.Generators <> bindGen def
+binder 2031:2032 <> n4:33
+R2047:2055 QuickChick.Generators <> returnGen def
+R2065:2067 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R2060:2062 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R2058:2059 trained_Generator <> n1:27 var
+R2063:2064 trained_Generator <> n2:30 var
+R2068:2069 trained_Generator <> n4:33 var
+R1933:1950 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R1960:1961 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R1973:1985 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R2014:2023 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R1962:1970 QuickChick.Generators <> returnGen def
+R1951:1959 trained_Generator <> _weight_4:32 var
+R1962:1970 QuickChick.Generators <> returnGen def
+R1986:1986 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2000:2001 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2013:2013 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1990:1990 Coq.Init.Peano <> ::nat_scope:x_'-'_x not
+R1991:1999 trained_Generator <> _weight_4:32 var
+R2002:2010 QuickChick.Generators <> returnGen def
+R1684:1701 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R1711:1712 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R1724:1736 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R1765:1774 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R1713:1721 QuickChick.Generators <> returnGen def
+R1702:1710 trained_Generator <> _weight_2:29 var
+R1713:1721 QuickChick.Generators <> returnGen def
+R1737:1737 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1751:1752 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1764:1764 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1741:1741 Coq.Init.Peano <> ::nat_scope:x_'-'_x not
+R1742:1750 trained_Generator <> _weight_2:29 var
+R1753:1761 QuickChick.Generators <> returnGen def
+R1435:1452 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R1462:1463 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R1475:1487 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R1516:1525 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R1464:1472 QuickChick.Generators <> returnGen def
+R1453:1461 trained_Generator <> _weight_1:26 var
+R1464:1472 QuickChick.Generators <> returnGen def
+R1488:1488 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1502:1503 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1515:1515 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1492:1492 Coq.Init.Peano <> ::nat_scope:x_'-'_x not
+R1493:1501 trained_Generator <> _weight_1:26 var
+R1504:1512 QuickChick.Generators <> returnGen def
+R1079:1087 QuickChick.Generators <> returnGen def
+R1090:1115 trained_Generator <> MkLeafCtorTreeLeafCtorTree constr
+R1117:1130 trained_Generator <> LeafCtorTree_E constr
+R1132:1145 trained_Generator <> LeafCtorTree_E constr
+R2300:2300 Coq.Init.Datatypes <> S constr
+R2317:2327 trained_Generator <> chosen_ctor:15 var
+R2340:2349 trained_Generator <> CtorTree_E constr
+R2362:2370 QuickChick.Generators <> returnGen def
+R2373:2373 trained_Generator <> E constr
+R2384:2393 trained_Generator <> CtorTree_T constr
+R2406:2412 QuickChick.Generators <> bindGen def
+binder 3482:3496 <> param_variantis:35
+R3543:3557 trained_Generator <> param_variantis:35 var
+R3508:3525 trained_Generator <> MkCtorTreeCtorTree constr
+R3572:3578 QuickChick.Generators <> bindGen def
+binder 4657:4658 <> p1:37
+R4675:4681 QuickChick.Generators <> bindGen def
+binder 4723:4724 <> p2:38
+R4743:4749 QuickChick.Generators <> bindGen def
+binder 4793:4794 <> p3:39
+R4815:4823 QuickChick.Generators <> returnGen def
+R4826:4826 trained_Generator <> T constr
+R4828:4829 trained_Generator <> p1:37 var
+R4831:4832 trained_Generator <> p2:38 var
+R4834:4835 trained_Generator <> p3:39 var
+R4752:4758 trained_Generator <> genTree:17 def
+R4684:4690 trained_Generator <> genTree:17 def
+R3635:3635 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3640:3641 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3648:3648 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3636:3639 trained_Generator <> size:14 var
+R3642:3647 trained_Generator <> stack1:16 var
+R3665:3665 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3667:3668 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3670:3670 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3688:3688 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3690:3691 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3693:3693 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3711:3711 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3713:3714 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3716:3716 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3734:3734 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3736:3737 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3739:3739 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3757:3757 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3759:3760 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3762:3762 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+binder 3616:3624 <> _weight_1:40
+R3820:3826 QuickChick.Generators <> bindGen def
+binder 3927:3928 <> n1:41
+R3965:3965 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3970:3971 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3978:3978 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3966:3969 trained_Generator <> size:14 var
+R3972:3977 trained_Generator <> stack1:16 var
+R3995:3995 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3997:3998 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4000:4000 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4018:4018 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4020:4021 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4023:4023 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4041:4041 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4043:4044 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4046:4046 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4064:4064 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4066:4067 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4069:4069 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4087:4087 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4089:4090 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4092:4092 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+binder 3946:3954 <> _weight_2:42
+R4150:4156 QuickChick.Generators <> bindGen def
+binder 4257:4258 <> n2:43
+R4295:4295 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4300:4301 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4308:4308 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4296:4299 trained_Generator <> size:14 var
+R4302:4307 trained_Generator <> stack1:16 var
+R4325:4325 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4327:4328 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4330:4330 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4348:4348 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4350:4351 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4353:4353 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4371:4371 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4373:4374 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4376:4376 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4394:4394 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4396:4397 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4399:4399 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4417:4417 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4419:4420 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4422:4422 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+binder 4276:4284 <> _weight_4:44
+R4480:4486 QuickChick.Generators <> bindGen def
+binder 4587:4588 <> n4:45
+R4603:4611 QuickChick.Generators <> returnGen def
+R4621:4623 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R4616:4618 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R4614:4615 trained_Generator <> n1:41 var
+R4619:4620 trained_Generator <> n2:43 var
+R4624:4625 trained_Generator <> n4:45 var
+R4489:4506 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R4516:4517 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R4529:4541 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R4570:4579 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R4518:4526 QuickChick.Generators <> returnGen def
+R4507:4515 trained_Generator <> _weight_4:44 var
+R4518:4526 QuickChick.Generators <> returnGen def
+R4542:4542 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4556:4557 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4569:4569 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4546:4546 Coq.Init.Peano <> ::nat_scope:x_'-'_x not
+R4547:4555 trained_Generator <> _weight_4:44 var
+R4558:4566 QuickChick.Generators <> returnGen def
+R4159:4176 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R4186:4187 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R4199:4211 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R4240:4249 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R4188:4196 QuickChick.Generators <> returnGen def
+R4177:4185 trained_Generator <> _weight_2:42 var
+R4188:4196 QuickChick.Generators <> returnGen def
+R4212:4212 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4226:4227 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4239:4239 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R4216:4216 Coq.Init.Peano <> ::nat_scope:x_'-'_x not
+R4217:4225 trained_Generator <> _weight_2:42 var
+R4228:4236 QuickChick.Generators <> returnGen def
+R3829:3846 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R3856:3857 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R3869:3881 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R3910:3919 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R3858:3866 QuickChick.Generators <> returnGen def
+R3847:3855 trained_Generator <> _weight_1:40 var
+R3858:3866 QuickChick.Generators <> returnGen def
+R3882:3882 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3896:3897 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3909:3909 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3886:3886 Coq.Init.Peano <> ::nat_scope:x_'-'_x not
+R3887:3895 trained_Generator <> _weight_1:40 var
+R3898:3906 QuickChick.Generators <> returnGen def
+R2439:2462 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R2634:2644 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R2697:2717 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R2955:2973 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R3211:3229 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R3467:3467 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R2645:2653 QuickChick.Generators <> returnGen def
+R2656:2673 trained_Generator <> MkCtorTreeCtorTree constr
+R2675:2684 trained_Generator <> CtorTree_E constr
+R2686:2695 trained_Generator <> CtorTree_E constr
+R2469:2469 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2474:2475 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2482:2482 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2470:2473 trained_Generator <> size:14 var
+R2476:2481 trained_Generator <> stack1:16 var
+R2499:2499 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2501:2502 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2504:2504 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2522:2522 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2524:2525 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2527:2527 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2545:2545 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2547:2548 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2550:2550 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2568:2568 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2570:2571 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2573:2573 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2591:2591 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2593:2594 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2596:2596 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2645:2653 QuickChick.Generators <> returnGen def
+R2656:2673 trained_Generator <> MkCtorTreeCtorTree constr
+R2675:2684 trained_Generator <> CtorTree_E constr
+R2686:2695 trained_Generator <> CtorTree_E constr
+R2718:2718 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2890:2900 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2953:2954 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2725:2725 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2730:2731 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2738:2738 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2726:2729 trained_Generator <> size:14 var
+R2732:2737 trained_Generator <> stack1:16 var
+R2755:2755 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2757:2758 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2760:2760 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2778:2778 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2780:2781 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2783:2783 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2801:2801 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2803:2804 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2806:2806 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2824:2824 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2826:2827 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2829:2829 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2847:2847 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2849:2850 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2852:2852 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2901:2909 QuickChick.Generators <> returnGen def
+R2912:2929 trained_Generator <> MkCtorTreeCtorTree constr
+R2931:2940 trained_Generator <> CtorTree_T constr
+R2942:2951 trained_Generator <> CtorTree_E constr
+R2974:2974 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3146:3156 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3209:3210 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2981:2981 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2986:2987 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2994:2994 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2982:2985 trained_Generator <> size:14 var
+R2988:2993 trained_Generator <> stack1:16 var
+R3011:3011 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3013:3014 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3016:3016 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3034:3034 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3036:3037 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3039:3039 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3057:3057 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3059:3060 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3062:3062 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3080:3080 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3082:3083 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3085:3085 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3103:3103 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3105:3106 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3108:3108 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3157:3165 QuickChick.Generators <> returnGen def
+R3168:3185 trained_Generator <> MkCtorTreeCtorTree constr
+R3187:3196 trained_Generator <> CtorTree_E constr
+R3198:3207 trained_Generator <> CtorTree_T constr
+R3230:3230 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3402:3412 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3465:3466 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3237:3237 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3242:3243 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3250:3250 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3238:3241 trained_Generator <> size:14 var
+R3244:3249 trained_Generator <> stack1:16 var
+R3267:3267 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3269:3270 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3272:3272 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3290:3290 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3292:3293 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3295:3295 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3313:3313 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3315:3316 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3318:3318 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3336:3336 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3338:3339 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3341:3341 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3359:3359 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3361:3362 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3364:3364 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3413:3421 QuickChick.Generators <> returnGen def
+R3424:3441 trained_Generator <> MkCtorTreeCtorTree constr
+R3443:3452 trained_Generator <> CtorTree_T constr
+R3454:3463 trained_Generator <> CtorTree_T constr
+def 4875:4880 <> gSized
+R4889:4895 QuickChick.Generators <> bindGen def
+binder 5099:5107 <> init_ctor:46
+R5113:5119 trained_Generator <> genTree def
+R5123:5131 trained_Generator <> init_ctor:46 var
+R4918:4937 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R4976:4982 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R5003:5019 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R5088:5088 QuickChick.Generators QcDefaultNotation ::qc_scope:'freq'_'['_'('_x_','_x_')'_';'_x_';'_'..'_';'_x_']' not
+R4983:4991 QuickChick.Generators <> returnGen def
+R4993:5002 trained_Generator <> CtorTree_E constr
+R4945:4946 Coq.Init.Datatypes <> tt constr
+R4960:4961 Coq.Init.Datatypes <> tt constr
+R4983:4991 QuickChick.Generators <> returnGen def
+R4993:5002 trained_Generator <> CtorTree_E constr
+R5020:5020 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R5059:5065 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R5086:5087 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R5028:5029 Coq.Init.Datatypes <> tt constr
+R5043:5044 Coq.Init.Datatypes <> tt constr
+R5066:5074 QuickChick.Generators <> returnGen def
+R5076:5085 trained_Generator <> CtorTree_T constr
+def 5150:5158 <> is_sticky
+R5165:5168 trained_Generator <> Tree ind
+binder 5161:5161 <> t:47
+R5173:5176 Coq.Init.Datatypes <> bool ind
+R5189:5189 trained_Generator <> t:47 var
+R5201:5201 trained_Generator <> T constr
+R5216:5216 trained_Generator <> T constr
+R5206:5206 trained_Generator <> T constr
+R5228:5232 Coq.Init.Datatypes <> false constr
+R5238:5238 trained_Generator <> T constr
+R5260:5263 Coq.Init.Datatypes <> ::bool_scope:x_'&&'_x not
+R5249:5257 trained_Generator <> is_sticky:48 def
+R5264:5272 trained_Generator <> is_sticky:48 def
+R5280:5280 trained_Generator <> E constr
+R5285:5288 Coq.Init.Datatypes <> true constr
+def 5308:5321 <> is_left_sticky
+R5328:5331 trained_Generator <> Tree ind
+binder 5324:5324 <> t:50
+R5336:5339 Coq.Init.Datatypes <> bool ind
+R5352:5352 trained_Generator <> t:50 var
+R5364:5364 trained_Generator <> T constr
+R5370:5370 trained_Generator <> E constr
+R5368:5368 trained_Generator <> E constr
+R5375:5378 Coq.Init.Datatypes <> true constr
+R5384:5384 trained_Generator <> T constr
+R5390:5390 trained_Generator <> E constr
+R5395:5408 trained_Generator <> is_left_sticky:51 def
+R5416:5416 trained_Generator <> T constr
+R5427:5431 Coq.Init.Datatypes <> false constr
+R5437:5437 trained_Generator <> E constr
+R5442:5445 Coq.Init.Datatypes <> true constr
+def 5465:5479 <> is_right_sticky
+R5486:5489 trained_Generator <> Tree ind
+binder 5482:5482 <> t:53
+R5494:5497 Coq.Init.Datatypes <> bool ind
+R5510:5510 trained_Generator <> t:53 var
+R5522:5522 trained_Generator <> T constr
+R5528:5528 trained_Generator <> E constr
+R5526:5526 trained_Generator <> E constr
+R5533:5536 Coq.Init.Datatypes <> true constr
+R5542:5542 trained_Generator <> T constr
+R5546:5546 trained_Generator <> E constr
+R5553:5567 trained_Generator <> is_right_sticky:54 def
+R5575:5575 trained_Generator <> T constr
+R5586:5590 Coq.Init.Datatypes <> false constr
+R5596:5596 trained_Generator <> E constr
+R5601:5604 Coq.Init.Datatypes <> true constr
+def 5624:5635 <> count_sticks
+R5642:5645 trained_Generator <> Tree ind
+binder 5638:5638 <> t:56
+R5653:5655 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R5650:5652 Coq.Init.Datatypes <> nat ind
+R5656:5658 Coq.Init.Datatypes <> nat ind
+R5671:5671 trained_Generator <> t:56 var
+R5682:5682 trained_Generator <> E constr
+R5687:5687 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R5689:5690 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R5692:5692 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R5698:5698 trained_Generator <> T constr
+R5730:5741 trained_Generator <> count_sticks:57 def
+R5718:5718 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R5721:5722 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R5725:5725 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R5769:5780 trained_Generator <> count_sticks:57 def
+R5757:5757 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R5760:5761 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R5764:5764 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R5838:5838 trained_Generator <> T constr
+R5847:5847 trained_Generator <> E constr
+binder 5795:5803 <> left_here:61
+R5937:5937 trained_Generator <> E constr
+R5940:5940 trained_Generator <> T constr
+binder 5893:5902 <> right_here:64
+R5988:5988 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R6008:6009 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R6030:6030 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R6003:6005 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R5998:6000 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R5989:5997 trained_Generator <> left_here:61 var
+R6025:6027 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R6020:6022 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R6010:6019 trained_Generator <> right_here:64 var
+def 6051:6067 <> count_left_sticks
+R6074:6077 trained_Generator <> Tree ind
+binder 6070:6070 <> t:65
+R6082:6084 Coq.Init.Datatypes <> nat ind
+R6089:6091 Coq.Init.Datatypes <> fst def
+R6094:6105 trained_Generator <> count_sticks def
+R6107:6107 trained_Generator <> t:65 var
+def 6122:6139 <> count_right_sticks
+R6146:6149 trained_Generator <> Tree ind
+binder 6142:6142 <> t:66
+R6154:6156 Coq.Init.Datatypes <> nat ind
+R6161:6163 Coq.Init.Datatypes <> snd def
+R6166:6177 trained_Generator <> count_sticks def
+R6179:6179 trained_Generator <> t:66 var
+def 6195:6208 <> is_rl_balanced
+R6215:6218 trained_Generator <> Tree ind
+binder 6211:6211 <> t:67
+R6223:6226 Coq.Init.Datatypes <> bool ind
+R6248:6259 trained_Generator <> count_sticks def
+R6261:6261 trained_Generator <> t:67 var
+R6238:6238 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R6240:6241 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R6243:6243 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R6268:6274 Coq.Arith.PeanoNat Nat eqb def
+def 6291:6300 <> get_height
+R6307:6310 trained_Generator <> Tree ind
+binder 6303:6303 <> t:68
+R6315:6317 Coq.Init.Datatypes <> nat ind
+R6330:6330 trained_Generator <> t:68 var
+R6341:6341 trained_Generator <> E constr
+R6352:6352 trained_Generator <> T constr
+R6364:6366 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R6367:6369 Coq.Init.Peano <> max syndef
+R6372:6381 trained_Generator <> get_height:69 def
+R6387:6396 trained_Generator <> get_height:69 def
+def 6420:6430 <> is_height_x
+R6437:6439 Coq.Init.Datatypes <> nat ind
+binder 6433:6433 <> x:71
+R6448:6451 trained_Generator <> Tree ind
+binder 6444:6444 <> t:72
+R6457:6460 Coq.Init.Datatypes <> bool ind
+R6465:6471 Coq.Arith.PeanoNat Nat eqb def
+R6474:6483 trained_Generator <> get_height def
+R6485:6485 trained_Generator <> t:72 var
+R6488:6488 trained_Generator <> x:71 var
+def 6502:6523 <> is_sticky_and_height_x
+R6530:6532 Coq.Init.Datatypes <> nat ind
+binder 6526:6526 <> x:73
+R6541:6544 trained_Generator <> Tree ind
+binder 6537:6537 <> t:74
+R6550:6553 Coq.Init.Datatypes <> bool ind
+R6569:6573 Coq.Init.Datatypes <> ::bool_scope:x_'&&'_x not
+R6598:6598 Coq.Init.Datatypes <> ::bool_scope:x_'&&'_x not
+R6558:6566 trained_Generator <> is_sticky def
+R6568:6568 trained_Generator <> t:74 var
+R6574:6580 Coq.Arith.PeanoNat Nat eqb def
+R6583:6592 trained_Generator <> get_height def
+R6594:6594 trained_Generator <> t:74 var
+R6597:6597 trained_Generator <> x:73 var
+def 6612:6631 <> is_prop_and_height_x
+R6643:6646 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6639:6642 trained_Generator <> Tree ind
+R6647:6650 Coq.Init.Datatypes <> bool ind
+binder 6634:6634 <> p:75
+R6659:6661 Coq.Init.Datatypes <> nat ind
+binder 6655:6655 <> x:76
+R6670:6673 trained_Generator <> Tree ind
+binder 6666:6666 <> t:77
+R6679:6682 Coq.Init.Datatypes <> bool ind
+R6690:6694 Coq.Init.Datatypes <> ::bool_scope:x_'&&'_x not
+R6719:6719 Coq.Init.Datatypes <> ::bool_scope:x_'&&'_x not
+R6687:6687 trained_Generator <> p:75 var
+R6689:6689 trained_Generator <> t:77 var
+R6695:6701 Coq.Arith.PeanoNat Nat eqb def
+R6704:6713 trained_Generator <> get_height def
+R6715:6715 trained_Generator <> t:77 var
+R6718:6718 trained_Generator <> x:76 var
+inst 6742:6752 <> genTreeInst
+R6756:6758 QuickChick.Classes <> Gen class
+R6760:6763 trained_Generator <> Tree ind
+R6771:6779 QuickChick.Classes <> arbitrary meth
+R6771:6779 QuickChick.Classes <> arbitrary meth
+R6771:6779 QuickChick.Classes <> arbitrary meth
+R6784:6789 trained_Generator <> gSized def
+inst 6814:6823 <> shrinkTree
+R6827:6832 QuickChick.Classes <> Shrink class
+R6834:6837 trained_Generator <> Tree ind
+R6845:6850 QuickChick.Classes <> shrink meth
+R6845:6850 QuickChick.Classes <> shrink meth
+R6845:6850 QuickChick.Classes <> shrink meth
+R6864:6865 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+inst 6890:6896 <> arbTree
+R6900:6908 QuickChick.Classes <> Arbitrary class
+R6910:6913 trained_Generator <> Tree ind
+def 6960:6973 <> test_is_sticky
+R6978:6983 QuickChick.Checker <> forAll def
+R7001:7004 trained_Generator <> Tree ind
+binder 6997:6997 <> t:81
+R7009:7017 trained_Generator <> is_sticky def
+R7019:7019 trained_Generator <> t:81 var
+R6985:6990 trained_Generator <> gSized def
+def 7034:7052 <> test_is_left_sticky
+R7057:7062 QuickChick.Checker <> forAll def
+R7080:7083 trained_Generator <> Tree ind
+binder 7076:7076 <> t:82
+R7088:7101 trained_Generator <> is_left_sticky def
+R7103:7103 trained_Generator <> t:82 var
+R7064:7069 trained_Generator <> gSized def
+def 7118:7137 <> test_is_right_sticky
+R7142:7147 QuickChick.Checker <> forAll def
+R7165:7168 trained_Generator <> Tree ind
+binder 7161:7161 <> t:83
+R7173:7187 trained_Generator <> is_right_sticky def
+R7189:7189 trained_Generator <> t:83 var
+R7149:7154 trained_Generator <> gSized def
+R7205:7218 trained_Generator <> test_is_sticky def
+def 7233:7239 <> numRuns
+def 7262:7273 <> count_sticky
+R7289:7292 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7285:7288 trained_Generator <> Tree ind
+R7293:7296 Coq.Init.Datatypes <> bool ind
+binder 7276:7279 <> prop:84
+R7305:7310 QuickChick.Checker <> forAll def
+R7328:7331 trained_Generator <> Tree ind
+binder 7324:7324 <> t:85
+R7340:7346 QuickChick.Checker <> collect def
+R7381:7384 Coq.Init.Datatypes <> true constr
+R7352:7355 trained_Generator <> prop:84 var
+R7357:7357 trained_Generator <> t:85 var
+R7374:7378 Coq.Init.Datatypes <> false constr
+R7364:7367 Coq.Init.Datatypes <> true constr
+R7312:7317 trained_Generator <> gSized def
+R7517:7528 trained_Generator <> count_sticky def
+R7530:7543 trained_Generator <> is_left_sticky def
+R7485:7497 QuickChick.Test <> updMaxSuccess def
+R7507:7513 trained_Generator <> numRuns def
+R7499:7505 QuickChick.Test <> stdArgs def
+R7596:7607 trained_Generator <> count_sticky def
+R7609:7623 trained_Generator <> is_right_sticky def
+R7564:7576 QuickChick.Test <> updMaxSuccess def
+R7586:7592 trained_Generator <> numRuns def
+R7578:7584 QuickChick.Test <> stdArgs def
+R7676:7687 trained_Generator <> count_sticky def
+R7689:7702 trained_Generator <> is_rl_balanced def
+R7644:7656 QuickChick.Test <> updMaxSuccess def
+R7666:7672 trained_Generator <> numRuns def
+R7658:7664 QuickChick.Test <> stdArgs def
+R7755:7766 trained_Generator <> count_sticky def
+R7769:7790 trained_Generator <> is_sticky_and_height_x def
+R7723:7735 QuickChick.Test <> updMaxSuccess def
+R7745:7751 trained_Generator <> numRuns def
+R7737:7743 QuickChick.Test <> stdArgs def
+R7846:7857 trained_Generator <> count_sticky def
+R7860:7881 trained_Generator <> is_sticky_and_height_x def
+R7814:7826 QuickChick.Test <> updMaxSuccess def
+R7836:7842 trained_Generator <> numRuns def
+R7828:7834 QuickChick.Test <> stdArgs def
+R7937:7948 trained_Generator <> count_sticky def
+R7951:7972 trained_Generator <> is_sticky_and_height_x def
+R7905:7917 QuickChick.Test <> updMaxSuccess def
+R7927:7933 trained_Generator <> numRuns def
+R7919:7925 QuickChick.Test <> stdArgs def
+R8028:8039 trained_Generator <> count_sticky def
+R8042:8063 trained_Generator <> is_sticky_and_height_x def
+R7996:8008 QuickChick.Test <> updMaxSuccess def
+R8018:8024 trained_Generator <> numRuns def
+R8010:8016 QuickChick.Test <> stdArgs def
+R8119:8130 trained_Generator <> count_sticky def
+R8133:8154 trained_Generator <> is_sticky_and_height_x def
+R8087:8099 QuickChick.Test <> updMaxSuccess def
+R8109:8115 trained_Generator <> numRuns def
+R8101:8107 QuickChick.Test <> stdArgs def
+R8210:8221 trained_Generator <> count_sticky def
+R8224:8243 trained_Generator <> is_prop_and_height_x def
+R8245:8258 trained_Generator <> is_left_sticky def
+R8178:8190 QuickChick.Test <> updMaxSuccess def
+R8200:8206 trained_Generator <> numRuns def
+R8192:8198 QuickChick.Test <> stdArgs def
+R8314:8325 trained_Generator <> count_sticky def
+R8328:8347 trained_Generator <> is_prop_and_height_x def
+R8349:8362 trained_Generator <> is_left_sticky def
+R8282:8294 QuickChick.Test <> updMaxSuccess def
+R8304:8310 trained_Generator <> numRuns def
+R8296:8302 QuickChick.Test <> stdArgs def
+R8418:8429 trained_Generator <> count_sticky def
+R8432:8451 trained_Generator <> is_prop_and_height_x def
+R8453:8466 trained_Generator <> is_left_sticky def
+R8386:8398 QuickChick.Test <> updMaxSuccess def
+R8408:8414 trained_Generator <> numRuns def
+R8400:8406 QuickChick.Test <> stdArgs def
+R8522:8533 trained_Generator <> count_sticky def
+R8536:8555 trained_Generator <> is_prop_and_height_x def
+R8557:8570 trained_Generator <> is_left_sticky def
+R8490:8502 QuickChick.Test <> updMaxSuccess def
+R8512:8518 trained_Generator <> numRuns def
+R8504:8510 QuickChick.Test <> stdArgs def
+R8626:8637 trained_Generator <> count_sticky def
+R8640:8659 trained_Generator <> is_prop_and_height_x def
+R8661:8674 trained_Generator <> is_left_sticky def
+R8594:8606 QuickChick.Test <> updMaxSuccess def
+R8616:8622 trained_Generator <> numRuns def
+R8608:8614 QuickChick.Test <> stdArgs def
+R8730:8741 trained_Generator <> count_sticky def
+R8744:8763 trained_Generator <> is_prop_and_height_x def
+R8765:8779 trained_Generator <> is_right_sticky def
+R8698:8710 QuickChick.Test <> updMaxSuccess def
+R8720:8726 trained_Generator <> numRuns def
+R8712:8718 QuickChick.Test <> stdArgs def
+R8835:8846 trained_Generator <> count_sticky def
+R8849:8868 trained_Generator <> is_prop_and_height_x def
+R8870:8884 trained_Generator <> is_right_sticky def
+R8803:8815 QuickChick.Test <> updMaxSuccess def
+R8825:8831 trained_Generator <> numRuns def
+R8817:8823 QuickChick.Test <> stdArgs def
+R8940:8951 trained_Generator <> count_sticky def
+R8954:8973 trained_Generator <> is_prop_and_height_x def
+R8975:8989 trained_Generator <> is_right_sticky def
+R8908:8920 QuickChick.Test <> updMaxSuccess def
+R8930:8936 trained_Generator <> numRuns def
+R8922:8928 QuickChick.Test <> stdArgs def
+R9045:9056 trained_Generator <> count_sticky def
+R9059:9078 trained_Generator <> is_prop_and_height_x def
+R9080:9094 trained_Generator <> is_right_sticky def
+R9013:9025 QuickChick.Test <> updMaxSuccess def
+R9035:9041 trained_Generator <> numRuns def
+R9027:9033 QuickChick.Test <> stdArgs def
+R9150:9161 trained_Generator <> count_sticky def
+R9164:9183 trained_Generator <> is_prop_and_height_x def
+R9185:9199 trained_Generator <> is_right_sticky def
+R9118:9130 QuickChick.Test <> updMaxSuccess def
+R9140:9146 trained_Generator <> numRuns def
+R9132:9138 QuickChick.Test <> stdArgs def
+R9255:9266 trained_Generator <> count_sticky def
+R9269:9288 trained_Generator <> is_prop_and_height_x def
+R9290:9303 trained_Generator <> is_rl_balanced def
+R9223:9235 QuickChick.Test <> updMaxSuccess def
+R9245:9251 trained_Generator <> numRuns def
+R9237:9243 QuickChick.Test <> stdArgs def
+R9359:9370 trained_Generator <> count_sticky def
+R9373:9392 trained_Generator <> is_prop_and_height_x def
+R9394:9407 trained_Generator <> is_rl_balanced def
+R9327:9339 QuickChick.Test <> updMaxSuccess def
+R9349:9355 trained_Generator <> numRuns def
+R9341:9347 QuickChick.Test <> stdArgs def
+R9463:9474 trained_Generator <> count_sticky def
+R9477:9496 trained_Generator <> is_prop_and_height_x def
+R9498:9511 trained_Generator <> is_rl_balanced def
+R9431:9443 QuickChick.Test <> updMaxSuccess def
+R9453:9459 trained_Generator <> numRuns def
+R9445:9451 QuickChick.Test <> stdArgs def
+R9567:9578 trained_Generator <> count_sticky def
+R9581:9600 trained_Generator <> is_prop_and_height_x def
+R9602:9615 trained_Generator <> is_rl_balanced def
+R9535:9547 QuickChick.Test <> updMaxSuccess def
+R9557:9563 trained_Generator <> numRuns def
+R9549:9555 QuickChick.Test <> stdArgs def
+R9671:9682 trained_Generator <> count_sticky def
+R9685:9704 trained_Generator <> is_prop_and_height_x def
+R9706:9719 trained_Generator <> is_rl_balanced def
+R9639:9651 QuickChick.Test <> updMaxSuccess def
+R9661:9667 trained_Generator <> numRuns def
+R9653:9659 QuickChick.Test <> stdArgs def
