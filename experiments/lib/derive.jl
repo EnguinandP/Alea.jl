@@ -49,7 +49,7 @@ end
 
 struct LangDerivedGenerator{T} <: GenerationParams{T}
     root_ty::Type
-    ty_sizes::Vector{Pair{Type, Integer}}
+    ty_sizes::Vector{Pair{Type,Integer}}
     stack_size::Integer
     intwidth::Integer
     arbitrary_prims::Bool
@@ -77,7 +77,7 @@ function generation_params_emit_stats(rs::RunState, p::LangDerivedGenerator, s)
 
     path = joinpath(rs.out_dir, "$(s)_Generator.v")
     open(path, "w") do file
-        println(file, to_coq(rs, p, prog))
+        println(file, to_coq(rs, p, prog; output_dir=rs.out_dir))
     end
     println_flush(rs.io, "Saved Coq generator to $(path)")
     println_flush(rs.io)
@@ -86,7 +86,7 @@ end
 
 struct LangSiblingDerivedGenerator{T} <: GenerationParams{T}
     root_ty::Type
-    ty_sizes::Vector{Pair{Type, Integer}}
+    ty_sizes::Vector{Pair{Type,Integer}}
     stack_size::Integer
     intwidth::Integer
 end
@@ -112,7 +112,7 @@ function generation_params_emit_stats(rs::RunState, p::LangSiblingDerivedGenerat
 
     path = joinpath(rs.out_dir, "$(s)_Generator.v")
     open(path, "w") do file
-        println(file, to_coq(rs, p, prog))
+        println(file, to_coq(rs, p, prog; output_dir=rs.out_dir))
     end
     println_flush(rs.io, "Saved Coq generator to $(path)")
     println_flush(rs.io)
@@ -153,7 +153,7 @@ function derive_lang_generator(p::LangDerivedGenerator{T}) where T
                                     L.Nat(Dict(p.ty_sizes)[param])
                                 end
                             ],
-                            [ L.Var(stack_vars[i]) for i in 2:p.stack_size ],
+                            [L.Var(stack_vars[i]) for i in 2:p.stack_size],
                             # [L.Loc()],
                         ))
                     elseif param == Nat.t
@@ -185,7 +185,7 @@ function derive_lang_generator(p::LangDerivedGenerator{T}) where T
                 "$(ctor)" => freq_branch
             )
         end
-        L.Frequency( dependents(), freq_branches)
+        L.Frequency(dependents(), freq_branches)
     end
 
     for ty in tys
@@ -222,7 +222,11 @@ function derive_lang_generator(p::LangDerivedGenerator{T}) where T
 end
 
 function ctor_enum_prefix(ty, leaf)
-    leaf_s = if leaf "Leaf" else "" end
+    leaf_s = if leaf
+        "Leaf"
+    else
+        ""
+    end
     "$(leaf_s)Ctor$(type_to_coq(ty))"
 end
 
@@ -234,15 +238,16 @@ function ctor_enum(ty, leaf)
     ])
 end
 
-variants2(ty, exclude_recursive) = if exclude_recursive
-    [
-        (ctor, params)
-        for (ctor, params) in variants(ty)
-        if !(ty in params)
-    ]
-else
-    variants(ty)
-end
+variants2(ty, exclude_recursive) =
+    if exclude_recursive
+        [
+            (ctor, params)
+            for (ctor, params) in variants(ty)
+            if !(ty in params)
+        ]
+    else
+        variants(ty)
+    end
 
 function derive_lang_sibling_generator(p::LangSiblingDerivedGenerator{T}) where T
     stack_vars = [Symbol("stack$(i)") for i in 1:p.stack_size]
@@ -261,11 +266,12 @@ function derive_lang_sibling_generator(p::LangSiblingDerivedGenerator{T}) where 
     ))
 
     function gen(ty, leaf, _zero_case)
-        zero_case() = if leaf
-            error("don't check zero_case() if leaf")
-        else
-            _zero_case
-        end
+        zero_case() =
+            if leaf
+                error("don't check zero_case() if leaf")
+            else
+                _zero_case
+            end
 
         chosen_ctor_branches = []
         ce = ctor_enum(ty, leaf)
@@ -312,16 +318,16 @@ function derive_lang_sibling_generator(p::LangSiblingDerivedGenerator{T}) where 
                                 if chosen_ctor_param_is_leaf
                                     []
                                 elseif chosen_ctor_param == ty
-                                    [ L.Var(:size1) ]
+                                    [L.Var(:size1)]
                                 else
-                                    [L.Nat(Dict(p.ty_sizes)[chosen_ctor_param] - 1) ]
+                                    [L.Nat(Dict(p.ty_sizes)[chosen_ctor_param] - 1)]
                                 end,
                                 if haskey(i_to_j, ccpi)
                                     [L.Var(Symbol("ctor$(i_to_j[ccpi])"))]
                                 else
                                     []
                                 end,
-                                [L.Var(stack_vars[i]) for i in 2:p.stack_size ],
+                                [L.Var(stack_vars[i]) for i in 2:p.stack_size],
                                 [L.Loc()],
                             )
                         )
@@ -352,7 +358,7 @@ function derive_lang_sibling_generator(p::LangSiblingDerivedGenerator{T}) where 
                     ]),
                     :param_variantis,
                     L.UnpackTuple(L.Var(:param_variantis),
-                        [L.Param(Symbol("ctor$(i)"), sub_ctor_ty) for (i,sub_ctor_ty) in enumerate(sub_ctors_tys)],
+                        [L.Param(Symbol("ctor$(i)"), sub_ctor_ty) for (i, sub_ctor_ty) in enumerate(sub_ctors_tys)],
                         res
                     )
                 )

@@ -1,0 +1,30 @@
+test,true,false,time
+is_sticky,886,114,0.177421
+is_left_sticky,275,725,0.179771
+is_right_sticky,235,765,0.181440
+is_rl_balanced,192,808,0.186014
+(is_height_x 0),109,891,0.240512
+(is_height_x 1),41,959,0.234957
+(is_height_x 2),43,957,0.262616
+(is_height_x 3),57,943,0.232634
+(is_height_x 4),741,259,0.238986
+(is_sticky_and_height_x 0),112,888,0.230343
+(is_sticky_and_height_x 1),42,958,0.182154
+(is_sticky_and_height_x 2),35,965,0.167709
+(is_sticky_and_height_x 3),65,935,0.175323
+(is_sticky_and_height_x 4),615,385,0.186537
+(is_prop_and_height_x is_rl_balanced 0),98,902,0.163118
+(is_prop_and_height_x is_rl_balanced 1),52,948,0.169121
+(is_prop_and_height_x is_rl_balanced 2),,1000,0.172480
+(is_prop_and_height_x is_rl_balanced 3),24,976,0.176383
+(is_prop_and_height_x is_rl_balanced 4),46,954,0.173114
+(is_prop_and_height_x is_left_sticky 0),92,908,0.252261
+(is_prop_and_height_x is_left_sticky 1),56,944,0.215598
+(is_prop_and_height_x is_left_sticky 2),29,971,0.247027
+(is_prop_and_height_x is_left_sticky 3),21,979,0.262550
+(is_prop_and_height_x is_left_sticky 4),77,923,0.185498
+(is_prop_and_height_x is_right_sticky 0),104,896,0.252364
+(is_prop_and_height_x is_right_sticky 1),47,953,0.414243
+(is_prop_and_height_x is_right_sticky 2),19,981,0.252381
+(is_prop_and_height_x is_right_sticky 3),10,990,0.164622
+(is_prop_and_height_x is_right_sticky 4),75,925,0.171683

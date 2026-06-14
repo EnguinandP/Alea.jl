@@ -1,0 +1,36 @@
+2026-06-11T13:51:17.143 5fc89e6b ["-f", "LangSiblingDerivedGenerator{ST}(Main.sKVTree.t,Pair{Type,Integer}[Main.sKVTree.t=>4],1,1)", "Pair{SatisfyPropertyLoss{ST},Float64}[SatisfyPropertyLoss{ST}(satisfies_zigzag)=>0.3]", "2000", "0.1"]
+== Config ==
+TAG: v133_artifact
+LangSiblingDerivedGenerator{ST}(Main.sKVTree.t, Pair{Type, Integer}[Main.sKVTree.t => 4], 1, 1)
+Pair{SatisfyPropertyLoss{ST}, Float64}[SatisfyPropertyLoss{ST}(satisfies_zigzag) => 0.3]
+Epochs: 2000
+Bound: 0.1
+SEED: 0
+ARGS: -f LangSiblingDerivedGenerator{ST}(Main.sKVTree.t,Pair{Type,Integer}[Main.sKVTree.t=>4],1,1) Pair{SatisfyPropertyLoss{ST},Float64}[SatisfyPropertyLoss{ST}(satisfies_zigzag)=>0.3] 2000 0.1
+
+Building generation computation graph...
+  5.096838084 seconds
+
+Building computation graph for SatisfyPropertyLoss{ST}(satisfies_zigzag)...
+  0.134575833 seconds
+
+ADNodes of interest (initial):
+Dict("Frequency3_2%%3%0" => 0.5, "Frequency2_1%%2" => 0.5, "Frequency3_2%%2%2" => 0.5, "Frequency1_1%%" => 0.5, "Frequency3_1%%1%2" => 0.5, "Frequency3_2%%1%4" => 0.5, "Frequency3_2%%1%2" => 0.5, "GenNat2_num1%%2%4" => 0.5, "GenNat1_num1%%4" => 0.5, "GenNat2_num1%%2%2" => 0.5, "Frequency3_3%%2%4" => 0.5, "GenNat2_num1%%1%2" => 0.5, "Frequency3_4%%2%2" => 0.5, "Frequency3_3%%1%2" => 0.5, "Frequency3_3%%1%4" => 0.5, "Frequency3_1%%2%4" => 0.5, "GenNat1_num1%%2" => 0.5, "Frequency3_3%%3%0" => 0.5, "GenNat2_num1%%3%0" => 0.5, "GenNat2_num1%%1%4" => 0.5, "Frequency3_4%%1%4" => 0.5, "Frequency3_1%%2%2" => 0.5, "Frequency3_4%%3%0" => 0.5, "Frequency3_4%%2%4" => 0.5, "Frequency3_4%%1%2" => 0.5, "Frequency3_1%%3%0" => 0.5, "Frequency3_3%%2%2" => 0.5, "Frequency2_1%%4" => 0.5, "Frequency3_2%%2%4" => 0.5, "Frequency3_1%%1%4" => 0.5, "Frequency1_2%%" => 0.5)
+
+Parameter values (initial):
+Dict{Var, Union{Real, AbstractMatrix{<:Real}}}(Var("Frequency3_2%%2%2_before_sigmoid") => 0, Var("Frequency3_4%%2%2_before_sigmoid") => 0, Var("Frequency3_1%%1%2_before_sigmoid") => 0, Var("GenNat2_num1%%2%2_before_sigmoid") => 0, Var("GenNat1_num1%%2_before_sigmoid") => 0, Var("GenNat1_num1%%4_before_sigmoid") => 0, Var("Frequency3_4%%1%4_before_sigmoid") => 0, Var("Frequency3_4%%2%4_before_sigmoid") => 0, Var("GenNat2_num1%%2%4_before_sigmoid") => 0, Var("Frequency3_1%%2%2_before_sigmoid") => 0, Var("Frequency2_1%%2_before_sigmoid") => 0, Var("Frequency1_2%%_before_sigmoid") => 0, Var("Frequency3_3%%2%2_before_sigmoid") => 0, Var("Frequency3_3%%3%0_before_sigmoid") => 0, Var("Frequency3_2%%2%4_before_sigmoid") => 0, Var("Frequency3_1%%3%0_before_sigmoid") => 0, Var("GenNat2_num1%%3%0_before_sigmoid") => 0, Var("Frequency3_3%%2%4_before_sigmoid") => 0, Var("Frequency2_1%%4_before_sigmoid") => 0, Var("Frequency3_2%%3%0_before_sigmoid") => 0, Var("Frequency3_2%%1%4_before_sigmoid") => 0, Var("Frequency3_3%%1%4_before_sigmoid") => 0, Var("Frequency3_3%%1%2_before_sigmoid") => 0, Var("Frequency3_1%%2%4_before_sigmoid") => 0, Var("Frequency1_1%%_before_sigmoid") => 0, Var("Frequency3_4%%1%2_before_sigmoid") => 0, Var("Frequency3_1%%1%4_before_sigmoid") => 0, Var("Frequency3_4%%3%0_before_sigmoid") => 0, Var("Frequency3_2%%1%2_before_sigmoid") => 0, Var("GenNat2_num1%%1%2_before_sigmoid") => 0, Var("GenNat2_num1%%1%4_before_sigmoid") => 0)
+
+Saved Coq generator to /Users/francille/Loaded_dice_artifact/artifact/experiments/../tuning-output/v133_artifact/st/langsiblingderived/root_ty=Main.sKVTree.t/ty-sizes=Main.sKVTree.t-4/stack_size=1/intwidth=1/satisfy_property/prop=satisfies_zigzag/0.3/epochs=2000/bound=0.1/initial_Generator.v
+
+
+ADNodes of interest (trained):
+Dict("Frequency3_2%%3%0" => 0.5, "Frequency2_1%%2" => 0.5, "Frequency3_2%%2%2" => 0.5, "Frequency1_1%%" => 0.8999999999999999, "Frequency3_1%%1%2" => 0.5, "Frequency3_2%%1%4" => 0.5, "Frequency3_2%%1%2" => 0.5, "GenNat2_num1%%2%4" => 0.5, "GenNat1_num1%%4" => 0.5, "GenNat2_num1%%2%2" => 0.5, "Frequency3_3%%2%4" => 0.5, "GenNat2_num1%%1%2" => 0.5, "Frequency3_4%%2%2" => 0.5, "Frequency3_3%%1%2" => 0.5, "Frequency3_3%%1%4" => 0.5, "Frequency3_1%%2%4" => 0.5, "GenNat1_num1%%2" => 0.5, "Frequency3_3%%3%0" => 0.5, "GenNat2_num1%%3%0" => 0.5, "GenNat2_num1%%1%4" => 0.5, "Frequency3_4%%1%4" => 0.5, "Frequency3_1%%2%2" => 0.5, "Frequency3_4%%3%0" => 0.5, "Frequency3_4%%2%4" => 0.5, "Frequency3_4%%1%2" => 0.5, "Frequency3_1%%3%0" => 0.5, "Frequency3_3%%2%2" => 0.5, "Frequency2_1%%4" => 0.5, "Frequency3_2%%2%4" => 0.5, "Frequency3_1%%1%4" => 0.5, "Frequency1_2%%" => 0.10000000000000002)
+
+Parameter values (trained):
+Dict{Var, Union{Real, AbstractMatrix{<:Real}}}(Var("Frequency3_2%%2%2_before_sigmoid") => 0, Var("Frequency3_4%%2%2_before_sigmoid") => 0, Var("Frequency3_1%%1%2_before_sigmoid") => 0, Var("GenNat2_num1%%2%2_before_sigmoid") => 0, Var("GenNat1_num1%%2_before_sigmoid") => 0, Var("GenNat1_num1%%4_before_sigmoid") => 0, Var("Frequency3_4%%1%4_before_sigmoid") => 0, Var("Frequency3_4%%2%4_before_sigmoid") => 0, Var("GenNat2_num1%%2%4_before_sigmoid") => 0, Var("Frequency3_1%%2%2_before_sigmoid") => 0, Var("Frequency2_1%%2_before_sigmoid") => 0, Var("Frequency1_2%%_before_sigmoid") => -2.197224577336219, Var("Frequency3_3%%2%2_before_sigmoid") => 0, Var("Frequency3_3%%3%0_before_sigmoid") => 0, Var("Frequency3_2%%2%4_before_sigmoid") => 0, Var("Frequency3_1%%3%0_before_sigmoid") => 0, Var("GenNat2_num1%%3%0_before_sigmoid") => 0, Var("Frequency3_3%%2%4_before_sigmoid") => 0, Var("Frequency2_1%%4_before_sigmoid") => 0, Var("Frequency3_2%%3%0_before_sigmoid") => 0, Var("Frequency3_2%%1%4_before_sigmoid") => 0, Var("Frequency3_3%%1%4_before_sigmoid") => 0, Var("Frequency3_3%%1%2_before_sigmoid") => 0, Var("Frequency3_1%%2%4_before_sigmoid") => 0, Var("Frequency1_1%%_before_sigmoid") => 2.1972245773362196, Var("Frequency3_4%%1%2_before_sigmoid") => 0, Var("Frequency3_1%%1%4_before_sigmoid") => 0, Var("Frequency3_4%%3%0_before_sigmoid") => 0, Var("Frequency3_2%%1%2_before_sigmoid") => 0, Var("GenNat2_num1%%1%2_before_sigmoid") => 0, Var("GenNat2_num1%%1%4_before_sigmoid") => 0)
+
+Saved Coq generator to /Users/francille/Loaded_dice_artifact/artifact/experiments/../tuning-output/v133_artifact/st/langsiblingderived/root_ty=Main.sKVTree.t/ty-sizes=Main.sKVTree.t-4/stack_size=1/intwidth=1/satisfy_property/prop=satisfies_zigzag/0.3/epochs=2000/bound=0.1/trained_Generator.v
+
+
+2026-06-11T13:51:30.929
+Total time elapsed: 13 seconds, 786 milliseconds

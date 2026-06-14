@@ -27,7 +27,7 @@ value(g::Generation) = g.value
 function run_benchmark(
     rs::RunState,
     generation_params::GenerationParams{T},
-    loss_config_weight_pairs::AbstractVector{<:Pair{<:LossConfig{T}, <:Real}},
+    loss_config_weight_pairs::AbstractVector{<:Pair{<:LossConfig{T},<:Real}},
     epochs::Integer,
     bound::Real,
     mk_unique_curves::Bool,
@@ -81,7 +81,9 @@ function run_benchmark(
                     end
                 end
                 feature_unique_curve(rs, generation.prog, feat, UNIQUE_CURVES_SAMPLES)
-            else nothing end
+            else
+                nothing
+            end
             for m in loss_mgrs
         ]
     end
@@ -136,7 +138,7 @@ function run_benchmark(
 
     emit_stats("trained")
 
-    postss = collect_unique_curves() 
+    postss = collect_unique_curves()
 
     for (loss_config, curve) in zip(loss_configs, curves)
         save_learning_curve(rs.out_dir, curve, join(to_subpath(loss_config), "_"))
@@ -164,132 +166,136 @@ end
 
 begin
 
-function mk_areaplot2(path; xlabel, ylabel, has_header)
-    open(path, "r") do f
-        header, lines = if has_header
-            line, lines... = readlines(f)
-            split(line,"\t"), lines
-        else
-            nothing, readlines(f)
-        end
-        v = [[parse(Float64, s) for s in split(line,"\t")] for line in lines]
-        # Create plot with GR backend
-        save_areaplot2(path, header, v; xlabel, ylabel)
-        # Switch to PGFPlots only for tex/tikz output
-        # pgfplots()
-        save_areaplot2(path, header, v; xlabel, ylabel)
-        # Switch back to GR
-        gr()
-    end
-end
-
-# function PGFPlotsX.print_tex(io::IO, data::Plots.Measures.AbsoluteLength)
-#     print(io, string(data))
-# end
-
-
-function save_areaplot2(path, header, v; xlabel, ylabel)
-    rng = Random.MersenneTwister(42)
-    
-    mat = mapreduce(permutedims, vcat, v)
-    
-    # Normalize each row to get proportions
-    row_sums = sum(mat, dims=2)
-    mat = mat ./ row_sums
-    
-    torow(v) = reshape(v, 1, length(v))
-
-    # Calculate maximum proportion for each column
-    max_proportions = vec(maximum(mat, dims=1))
-
-    # Create ordering by maximum proportion
-    order = sortperm(max_proportions, rev=true)
-    mat = mat[:, order]
-    max_proportions = max_proportions[order]
-
-    # Calculate threshold to show top 20 labels
-    num_labels_to_show = min(18, length(max_proportions))
-    threshold = max_proportions[num_labels_to_show]  
-    println_flush(rs.io, "Threshold: $(threshold)")
-
-    # Find where the original first three columns ended up
-    original_positions = [findfirst(==(i), order) for i in 1:3]
-
-    # Reorder and process labels
-    header = isnothing(header) ? ["$(i)" for i in 0:Base.size(mat, 2)] : header
-    header = header[order]
-    labels = function f(h::AbstractString)
-        if h == "not well-typed"
-            return "Not well-typed"
-        end
-        l = 20
-        if length(collect(h)) > l
-            first(h, l) * " ..."
-        else
-            h
-        end
-    end
-    labels = torow([
-        if max_proportions[i] < threshold "" else f(s) end
-        for (i, s) in enumerate(header)
-    ])
-
-    # Create colors with golden ratio spacing after reordering
-    n_colors = Base.size(mat, 2)
-    phi = (1 + √5) / 2  # golden ratio
-    colors = [
-        get(cgrad(:thermal), 
-            mod((i / 2 / phi), 1.0) ^ 1.2
-        ) 
-        for i in 1:n_colors
-    ]
-    
-    # Override specific colors for the reordered positions
-    override_colors = [
-        RGBA(0, 0, 0, 1.0),              # Black for "Not Well-Typed"
-    ]
-    
-    for (new_pos, color) in zip(original_positions, override_colors)
-        if !isnothing(new_pos)
-            colors[new_pos] = color
+    function mk_areaplot2(path; xlabel, ylabel, has_header)
+        open(path, "r") do f
+            header, lines = if has_header
+                line, lines... = readlines(f)
+                split(line, "\t"), lines
+            else
+                nothing, readlines(f)
+            end
+            v = [[parse(Float64, s) for s in split(line, "\t")] for line in lines]
+            # Create plot with GR backend
+            save_areaplot2(path, header, v; xlabel, ylabel)
+            # Switch to PGFPlots only for tex/tikz output
+            # pgfplots()
+            save_areaplot2(path, header, v; xlabel, ylabel)
+            # Switch back to GR
+            gr()
         end
     end
 
-    fontsize=33
-    areaplot(
-        mat,
-        labels=labels,
-        color_palette=colors,
-        tickfontsize=fontsize,
-        legendfontsize=fontsize,
-        fontfamily="Arial",
-        fontsize=fontsize,
-        xlabel=xlabel,
-        ylabel=ylabel,
-        xaxis=:log10,
-        xlabelfontsize=fontsize,
-        ylabelfontsize=fontsize,
-        legend=:outerright,
-        left_margin=30Plots.mm,
-        right_margin=40Plots.mm,
-        foreground_color_legend = nothing,
-        bottom_margin=25Plots.mm,
-        legend_left_margin=-20Plots.mm,
-        yticks=nothing,
-    )
-    yflip!(true)
-    plot!(size=(2200,1200))
-    
-    # Save with current backend
-    # backend_name = string(Plots.backend())
-    # if backend_name == "pgfplotsx"
-    #     Plots.savefig("$(path).tikz")
-    #     Plots.savefig("$(path).tex")
-    # else
+    # function PGFPlotsX.print_tex(io::IO, data::Plots.Measures.AbsoluteLength)
+    #     print(io, string(data))
+    # end
+
+
+    function save_areaplot2(path, header, v; xlabel, ylabel)
+        rng = Random.MersenneTwister(42)
+
+        mat = mapreduce(permutedims, vcat, v)
+
+        # Normalize each row to get proportions
+        row_sums = sum(mat, dims=2)
+        mat = mat ./ row_sums
+
+        torow(v) = reshape(v, 1, length(v))
+
+        # Calculate maximum proportion for each column
+        max_proportions = vec(maximum(mat, dims=1))
+
+        # Create ordering by maximum proportion
+        order = sortperm(max_proportions, rev=true)
+        mat = mat[:, order]
+        max_proportions = max_proportions[order]
+
+        # Calculate threshold to show top 20 labels
+        num_labels_to_show = min(18, length(max_proportions))
+        threshold = max_proportions[num_labels_to_show]
+        println_flush(rs.io, "Threshold: $(threshold)")
+
+        # Find where the original first three columns ended up
+        original_positions = [findfirst(==(i), order) for i in 1:3]
+
+        # Reorder and process labels
+        header = isnothing(header) ? ["$(i)" for i in 0:Base.size(mat, 2)] : header
+        header = header[order]
+        labels = function f(h::AbstractString)
+            if h == "not well-typed"
+                return "Not well-typed"
+            end
+            l = 20
+            if length(collect(h)) > l
+                first(h, l) * " ..."
+            else
+                h
+            end
+        end
+        labels = torow([
+            if max_proportions[i] < threshold
+                ""
+            else
+                f(s)
+            end
+            for (i, s) in enumerate(header)
+        ])
+
+        # Create colors with golden ratio spacing after reordering
+        n_colors = Base.size(mat, 2)
+        phi = (1 + √5) / 2  # golden ratio
+        colors = [
+            get(cgrad(:thermal),
+                mod((i / 2 / phi), 1.0)^1.2
+            )
+            for i in 1:n_colors
+        ]
+
+        # Override specific colors for the reordered positions
+        override_colors = [
+            RGBA(0, 0, 0, 1.0),              # Black for "Not Well-Typed"
+        ]
+
+        for (new_pos, color) in zip(original_positions, override_colors)
+            if !isnothing(new_pos)
+                colors[new_pos] = color
+            end
+        end
+
+        fontsize = 33
+        areaplot(
+            mat,
+            labels=labels,
+            color_palette=colors,
+            tickfontsize=fontsize,
+            legendfontsize=fontsize,
+            fontfamily="Arial",
+            fontsize=fontsize,
+            xlabel=xlabel,
+            ylabel=ylabel,
+            xaxis=:log10,
+            xlabelfontsize=fontsize,
+            ylabelfontsize=fontsize,
+            legend=:outerright,
+            left_margin=30Plots.mm,
+            right_margin=40Plots.mm,
+            foreground_color_legend=nothing,
+            bottom_margin=25Plots.mm,
+            legend_left_margin=-20Plots.mm,
+            yticks=nothing,
+        )
+        yflip!(true)
+        plot!(size=(2200, 1200))
+
+        # Save with current backend
+        # backend_name = string(Plots.backend())
+        # if backend_name == "pgfplotsx"
+        #     Plots.savefig("$(path).tikz")
+        #     Plots.savefig("$(path).tex")
+        # else
         Plots.savefig("$(path).png")
         Plots.savefig("$(path).svg")
-    # end
-end
+        # end
+    end
 
 
     # p = plot(
@@ -303,7 +309,7 @@ end
     #     ticks=nothing,                    # hide ticks
     #     framestyle=:none                  # hide frame
     # )
-    
+
     # # Add dummy series just for the legend entries
     # for (i, label) in enumerate(header)
     #     plot!(p, [], [], 
@@ -311,7 +317,7 @@ end
     #         color=get(cgrad(:thermal), (i-1)/(length(header)-1))
     #     )
     # end
-    
+
     # # Save just the legend
     # savefig("$(path).legend.png")
     # savefig("$(path).legend.svg")
@@ -323,199 +329,199 @@ end
 
 
 
-# function save_areaplot2(path, header, v; xlabel, ylabel)
-#     mat = mapreduce(permutedims, vcat, v)
-    
-#     # Normalize each row to get proportions
-#     row_sums = sum(mat, dims=2)
-#     mat = mat ./ row_sums
-    
-#     torow(v) = reshape(v, 1, length(v))
-#     size = Base.size
-    
-#     # Generate labels first
-#     labels = if isnothing(header)
-#         ["$(i)" for i in 0:size(mat)[2]]
-#     else
-#         function f(h::AbstractString)
-#             l = 20
-#             if length(collect(h)) > l
-#                 first(h, l) * " ..."
-#             else
-#                 h
-#             end
-#         end
-#         [f(s) for s in header]
-#     end
-    
-#     # Set first label manually
-#     if length(labels) > 0
-#         labels[1] = "Not well-typed"
-#     end
-#     for i in 1:length(labels)
-#         labels[i] = ""
-#     end
-    
-#     # Threshold for "small" areas (using proportion threshold)
-#     threshold = 0.0  # 1% threshold
-    
-#     # Identify which columns are "small" based on their maximum proportion
-#     column_maxes = [maximum(mat[:, i]) for i in 1:size(mat)[2]]
-#     is_small = column_maxes .< threshold
-    
-#     # Combine columns keeping originals but marking small ones for special coloring
-#     mat_combined = mat
-    
-#     # Update labels
-#     labels_main = copy(labels)
-#     other_indices = findall(is_small)
-    
-#     # Create figure and axis
-#     fig, ax = subplots(figsize=(10, 5))
-    
-#     # Get x values
-#     x = 1:size(mat)[1]
-    
-#     # Create colors using thermal colormap, skipping first 20%
-#     n_main = sum(.!is_small)
-#     thermal_cmap = plt.cm.get_cmap("magma")  # similar to thermal
-#     main_colors = [(0, 0, 0, 1)]  # Start with black for "Not well-typed"
-#     if n_main > 1
-#         # Generate colors from thermal gradient, skipping first 20%
-#         thermal_colors = [thermal_cmap(i) for i in LinRange(0.2, 1.0, n_main-1)]
-#         main_colors = vcat(main_colors, thermal_colors)
-#     end
-    
-#     # Define two shades of blue for "other" categories
-#     light_blue = (0.6, 0.8, 1.0, 1.0)  # Light blue
-#     dark_blue = (0.2, 0.4, 0.8, 1.0)   # Dark blue
-    
-#     # Create color array
-#     colors = Vector{Tuple{Float64, Float64, Float64, Float64}}(undef, size(mat)[2])
-#     main_idx = 1
-#     for i in 1:size(mat)[2]
-#         if is_small[i]
-#             colors[i] = i % 2 == 0 ? light_blue : dark_blue
-#             labels_main[i] = "Other"
-#         else
-#             colors[i] = main_colors[main_idx]
-#             main_idx += 1
-#         end
-#     end
-    
-#     # Create stacked area plot
-#     y_stack = zeros(size(mat_combined)[1])
-#     areas = []
-    
-#     # Track if we've added "Other" to legend
-#     other_in_legend = false
-    
-#     for i in 1:size(mat_combined)[2]
-#         # For small categories, only add to legend once
-#         if is_small[i]
-#             if !other_in_legend
-#                 area = ax.fill_between(x, y_stack, y_stack .+ mat_combined[:, i],
-#                                      label="Other",
-#                                      color=colors[i],
-#                                      alpha=0.95)
-#                 other_in_legend = true
-#             else
-#                 area = ax.fill_between(x, y_stack, y_stack .+ mat_combined[:, i],
-#                                      color=colors[i],
-#                                      alpha=0.95)
-#             end
-#         else
-#             area = ax.fill_between(x, y_stack, y_stack .+ mat_combined[:, i],
-#                                  label=labels_main[i],
-#                                  color=colors[i],
-#                                  alpha=0.95)
-#         end
-#         push!(areas, area)
-#         y_stack .+= mat_combined[:, i]
-#     end
-    
-#     # Style improvements
-#     ax.set_facecolor("white")
-#     fig.patch.set_facecolor("white")
-    
-#     # Customize plot
-#     fontsize = 8
-#     ax.set_xlabel(xlabel, fontsize=fontsize)
-#     ax.set_ylabel("Proportion", fontsize=fontsize)
-#     ax.tick_params(labelsize=fontsize)
-    
-#     # Set y-axis to show percentages
-#     ax.yaxis.set_major_formatter(plt.matplotlib.ticker.PercentFormatter(1.0))
-    
-#     # Set font family
-#     plt.rcParams["font.family"] = "Palatino"
-    
-#     # Adjust legend
-#     legend = ax.legend(bbox_to_anchor=(1.05, 1),
-#                       loc="upper left",
-#                       fontsize=fontsize)
-#     legend.get_frame().set_facecolor("none")
-    
-#     # Adjust margins
-#     plt.subplots_adjust(left=0.1, right=0.85, bottom=0.1, top=0.9)
-    
-#     # Save figures
-#     plt.savefig("$(path).png", dpi=300, bbox_inches="tight")
-#     plt.savefig("$(path).svg", bbox_inches="tight")
-    
-#     plt.close()
-# end
+    # function save_areaplot2(path, header, v; xlabel, ylabel)
+    #     mat = mapreduce(permutedims, vcat, v)
+
+    #     # Normalize each row to get proportions
+    #     row_sums = sum(mat, dims=2)
+    #     mat = mat ./ row_sums
+
+    #     torow(v) = reshape(v, 1, length(v))
+    #     size = Base.size
+
+    #     # Generate labels first
+    #     labels = if isnothing(header)
+    #         ["$(i)" for i in 0:size(mat)[2]]
+    #     else
+    #         function f(h::AbstractString)
+    #             l = 20
+    #             if length(collect(h)) > l
+    #                 first(h, l) * " ..."
+    #             else
+    #                 h
+    #             end
+    #         end
+    #         [f(s) for s in header]
+    #     end
+
+    #     # Set first label manually
+    #     if length(labels) > 0
+    #         labels[1] = "Not well-typed"
+    #     end
+    #     for i in 1:length(labels)
+    #         labels[i] = ""
+    #     end
+
+    #     # Threshold for "small" areas (using proportion threshold)
+    #     threshold = 0.0  # 1% threshold
+
+    #     # Identify which columns are "small" based on their maximum proportion
+    #     column_maxes = [maximum(mat[:, i]) for i in 1:size(mat)[2]]
+    #     is_small = column_maxes .< threshold
+
+    #     # Combine columns keeping originals but marking small ones for special coloring
+    #     mat_combined = mat
+
+    #     # Update labels
+    #     labels_main = copy(labels)
+    #     other_indices = findall(is_small)
+
+    #     # Create figure and axis
+    #     fig, ax = subplots(figsize=(10, 5))
+
+    #     # Get x values
+    #     x = 1:size(mat)[1]
+
+    #     # Create colors using thermal colormap, skipping first 20%
+    #     n_main = sum(.!is_small)
+    #     thermal_cmap = plt.cm.get_cmap("magma")  # similar to thermal
+    #     main_colors = [(0, 0, 0, 1)]  # Start with black for "Not well-typed"
+    #     if n_main > 1
+    #         # Generate colors from thermal gradient, skipping first 20%
+    #         thermal_colors = [thermal_cmap(i) for i in LinRange(0.2, 1.0, n_main-1)]
+    #         main_colors = vcat(main_colors, thermal_colors)
+    #     end
+
+    #     # Define two shades of blue for "other" categories
+    #     light_blue = (0.6, 0.8, 1.0, 1.0)  # Light blue
+    #     dark_blue = (0.2, 0.4, 0.8, 1.0)   # Dark blue
+
+    #     # Create color array
+    #     colors = Vector{Tuple{Float64, Float64, Float64, Float64}}(undef, size(mat)[2])
+    #     main_idx = 1
+    #     for i in 1:size(mat)[2]
+    #         if is_small[i]
+    #             colors[i] = i % 2 == 0 ? light_blue : dark_blue
+    #             labels_main[i] = "Other"
+    #         else
+    #             colors[i] = main_colors[main_idx]
+    #             main_idx += 1
+    #         end
+    #     end
+
+    #     # Create stacked area plot
+    #     y_stack = zeros(size(mat_combined)[1])
+    #     areas = []
+
+    #     # Track if we've added "Other" to legend
+    #     other_in_legend = false
+
+    #     for i in 1:size(mat_combined)[2]
+    #         # For small categories, only add to legend once
+    #         if is_small[i]
+    #             if !other_in_legend
+    #                 area = ax.fill_between(x, y_stack, y_stack .+ mat_combined[:, i],
+    #                                      label="Other",
+    #                                      color=colors[i],
+    #                                      alpha=0.95)
+    #                 other_in_legend = true
+    #             else
+    #                 area = ax.fill_between(x, y_stack, y_stack .+ mat_combined[:, i],
+    #                                      color=colors[i],
+    #                                      alpha=0.95)
+    #             end
+    #         else
+    #             area = ax.fill_between(x, y_stack, y_stack .+ mat_combined[:, i],
+    #                                  label=labels_main[i],
+    #                                  color=colors[i],
+    #                                  alpha=0.95)
+    #         end
+    #         push!(areas, area)
+    #         y_stack .+= mat_combined[:, i]
+    #     end
+
+    #     # Style improvements
+    #     ax.set_facecolor("white")
+    #     fig.patch.set_facecolor("white")
+
+    #     # Customize plot
+    #     fontsize = 8
+    #     ax.set_xlabel(xlabel, fontsize=fontsize)
+    #     ax.set_ylabel("Proportion", fontsize=fontsize)
+    #     ax.tick_params(labelsize=fontsize)
+
+    #     # Set y-axis to show percentages
+    #     ax.yaxis.set_major_formatter(plt.matplotlib.ticker.PercentFormatter(1.0))
+
+    #     # Set font family
+    #     plt.rcParams["font.family"] = "Palatino"
+
+    #     # Adjust legend
+    #     legend = ax.legend(bbox_to_anchor=(1.05, 1),
+    #                       loc="upper left",
+    #                       fontsize=fontsize)
+    #     legend.get_frame().set_facecolor("none")
+
+    #     # Adjust margins
+    #     plt.subplots_adjust(left=0.1, right=0.85, bottom=0.1, top=0.9)
+
+    #     # Save figures
+    #     plt.savefig("$(path).png", dpi=300, bbox_inches="tight")
+    #     plt.savefig("$(path).svg", bbox_inches="tight")
+
+    #     plt.close()
+    # end
 
 
 
 
 
-function make_plots(
-    rs::RunState,
-    generation_params::GenerationParams{T},
-    loss_config_weight_pairs::AbstractVector{<:Pair{<:LossConfig{T}, <:Real}},
-    epochs::Integer,
-    bound::Real,
-) where T
-    press, postss = load_object(joinpath(out_dir, "pres_posts.jld2"))
+    function make_plots(
+        rs::RunState,
+        generation_params::GenerationParams{T},
+        loss_config_weight_pairs::AbstractVector{<:Pair{<:LossConfig{T},<:Real}},
+        epochs::Integer,
+        bound::Real,
+    ) where T
+        press, postss = load_object(joinpath(out_dir, "pres_posts.jld2"))
 
-    loss_configs, loss_weights = zip(loss_config_weight_pairs...)
+        loss_configs, loss_weights = zip(loss_config_weight_pairs...)
 
-    for (loss_config, pres, posts) in zip(loss_configs, press, postss)
-        if !isnothing(pres)
-            name = "unique_curves_" * join(to_subpath(loss_config), "_")
-            csv_path = joinpath(out_dir, "$(name).csv")
-            open(csv_path, "w") do file
-                xs = 1:length(pres)
-                for (num_samples, pre, post) in zip(xs, pres, posts)
-                    println(file, "$(num_samples)\t$(pre)\t$(post)")
+        for (loss_config, pres, posts) in zip(loss_configs, press, postss)
+            if !isnothing(pres)
+                name = "unique_curves_" * join(to_subpath(loss_config), "_")
+                csv_path = joinpath(out_dir, "$(name).csv")
+                open(csv_path, "w") do file
+                    xs = 1:length(pres)
+                    for (num_samples, pre, post) in zip(xs, pres, posts)
+                        println(file, "$(num_samples)\t$(pre)\t$(post)")
+                    end
+                    # Create plot with GR backend
+                    Plots.plot(xs, pres, label="Initial", color=:blue, xlabel="Number of samples", ylabel="Count", title="STLC: Cumulative unique types during sampling", legend=:topright)
+                    plot!(xs, posts, label="Trained", color=:red)
+                    Plots.savefig(joinpath(out_dir, "$(name).svg"))
+                    Plots.savefig(joinpath(out_dir, "$(name).png"))
+
+                    println_flush(rs.io, "Saved unique curves to $(csv_path)")
+
+                    # Switch to PGFPlots for tex output
+                    # pgfplots()
+                    # Plots.savefig(joinpath(out_dir, "$(name).tikz"))
+                    # Plots.savefig(joinpath(out_dir, "$(name).tex"))
+                    # # Switch back to GR
+                    # gr()
                 end
-                # Create plot with GR backend
-                Plots.plot(xs, pres, label="Initial", color=:blue, xlabel="Number of samples", ylabel="Count", title="STLC: Cumulative unique types during sampling", legend=:topright)
-                plot!(xs, posts, label="Trained", color=:red)
-                Plots.savefig(joinpath(out_dir, "$(name).svg"))
-                Plots.savefig(joinpath(out_dir, "$(name).png"))
 
-                println_flush(rs.io, "Saved unique curves to $(csv_path)")
-                
-                # Switch to PGFPlots for tex output
-                # pgfplots()
-                # Plots.savefig(joinpath(out_dir, "$(name).tikz"))
-                # Plots.savefig(joinpath(out_dir, "$(name).tex"))
-                # # Switch back to GR
-                # gr()
-            end
-
-            if loss_config isa FeatureSpecEntropy
-                filename = joinpath(rs.out_dir, "feature_dist_" * join(to_subpath(loss_config), "_"))
-                mk_areaplot2(filename, has_header=true, xlabel="Epochs", ylabel="Sample Proportion")
+                if loss_config isa FeatureSpecEntropy
+                    filename = joinpath(rs.out_dir, "feature_dist_" * join(to_subpath(loss_config), "_"))
+                    mk_areaplot2(filename, has_header=true, xlabel="Epochs", ylabel="Sample Proportion")
+                end
             end
         end
     end
-end
 
 
-# make_plots(rs, generation_params, loss_config_weight_pairs, epochs, bound)
+    # make_plots(rs, generation_params, loss_config_weight_pairs, epochs, bound)
 end
 
 function compute_feature_counts(feature_counts_history)
@@ -525,7 +531,7 @@ function compute_feature_counts(feature_counts_history)
         if ctor == :Some
             ty, = args
             push!(d, (ty_str(ty), cts))
-        else 
+        else
             ctor = :None
             push!(d, ("not well-typed", cts))
         end
@@ -536,12 +542,12 @@ end
 function save_feature_cts(filename, d)
     open(filename, "w") do file
         println(file, join([
-            k for (k, cts) in d
-        ], "\t"))
+                k for (k, cts) in d
+            ], "\t"))
         for i in 1:length(first(d)[2])
             println(file, join([
-                cts[i] for (k, cts) in d
-            ], "\t"))
+                    cts[i] for (k, cts) in d
+                ], "\t"))
         end
     end
     println_flush(rs.io, "Saved to $(filename)")
@@ -565,6 +571,8 @@ isRBTdist(t) = satisfies_bookkeeping_invariant(t) & satisfies_balance_invariant(
 isBST(t) = satisfies_order_invariant(t)
 isST(t) = satisfies_stickyness(t)
 isSTs(t) = satisfies_stickyness_simple(t)
+isZZ(t) = satisfies_zigzag(t)
+isZZarb(t) = satisfies_zigzag_arbitrary_pivot(t)
 function wellTyped(e::OptExpr.t)
     @assert isdeterministic(e)
     @match e [
@@ -592,7 +600,7 @@ end
 function save_areaplot(path, v)
     mat = mapreduce(permutedims, vcat, v)
     torow(v) = reshape(v, 1, length(v))
-    fontsize=18
+    fontsize = 18
     areaplot(
         mat,
         labels=torow(["$(i)" for i in 0:size(mat, 2)]),
@@ -613,7 +621,7 @@ end
 
 function mk_areaplot(path)
     open(path, "r") do f
-        v = [[parse(Float64, s) for s in split(line,"\t")] for line in readlines(f)]
+        v = [[parse(Float64, s) for s in split(line, "\t")] for line in readlines(f)]
         save_areaplot(path, v)
     end
 end
@@ -633,7 +641,9 @@ function to_dist(v)
     end
 end
 
-clear_file(path) = open(path, "w") do f end
+clear_file(path) =
+    open(path, "w") do f
+    end
 
 function save_learning_curve(out_dir, learning_curve, name)
     open(joinpath(out_dir, "$(name).csv"), "w") do file
@@ -710,11 +720,11 @@ function produce_loss(rs::RunState, m::SpecEntropyLossMgr, epoch::Integer)
         a = ADComputer(rs.var_vals)
         samples = [to_dist(sampler()) for _ in 1:m.p.samples_per_batch]
         # samples = with_concrete_ad_flips(rs.var_vals, m.generation.value) do
-            # [sample_as_dist(rs.rng, a, m.generation.value) for _ in 1:m.p.samples_per_batch]
+        # [sample_as_dist(rs.rng, a, m.generation.value) for _ in 1:m.p.samples_per_batch]
         # end
 
         l = Dice.LogPrExpander(WMC(BDDCompiler([
-            prob_equals(m.generation.value,sample)
+            prob_equals(m.generation.value, sample)
             for sample in samples
         ])))
 
@@ -792,11 +802,11 @@ function produce_loss(rs::RunState, m::WeightedSpecEntropyLossMgr, epoch::Intege
         a = ADComputer(rs.var_vals)
         samples = [to_dist(sampler()) for _ in 1:m.p.samples_per_batch]
         # samples = with_concrete_ad_flips(rs.var_vals, m.generation.value) do
-            # [sample_as_dist(rs.rng, a, m.generation.value) for _ in 1:m.p.samples_per_batch]
+        # [sample_as_dist(rs.rng, a, m.generation.value) for _ in 1:m.p.samples_per_batch]
         # end
 
         l = Dice.LogPrExpander(WMC(BDDCompiler([
-            prob_equals(m.generation.value,sample)
+            prob_equals(m.generation.value, sample)
             for sample in samples
         ])))
 
@@ -923,7 +933,7 @@ function produce_loss(rs::RunState, m::FeatureSpecEntropyLossMgr, epoch::Integer
         end
 
         l = Dice.LogPrExpander(WMC(BDDCompiler([
-            prob_equals(m.generation.value,sample)
+            prob_equals(m.generation.value, sample)
             for sample in samples
         ])))
 
@@ -935,8 +945,8 @@ function produce_loss(rs::RunState, m::FeatureSpecEntropyLossMgr, epoch::Integer
                 lpr_eq = LogPr(prob_equals(m.generation.value, sample))
                 lpr_eq = Dice.expand_logprs(l, lpr_eq)
                 ct = feature_counts[m.p.feature(sample)]
-                @assert ct != 0 
-                rat = ct/length(samples)
+                @assert ct != 0
+                rat = ct / length(samples)
                 empirical_feature_logpr = Dice.Constant(log(rat))
                 if m.p.train_feature
                     [lpr_eq * empirical_feature_logpr, empirical_feature_logpr]
@@ -986,19 +996,19 @@ end
 function generate(rs::RunState, ::Flips{W}) where W
     Generation(
         DistUInt{W}([
-            flip(register_weight!(rs, "f$(i)", random_value=true))
-            for i in 1:W
-        ],
-        nothing,
-        Dict(),
-    ))
+                flip(register_weight!(rs, "f$(i)", random_value=true))
+                for i in 1:W
+            ],
+            nothing,
+            Dict(),
+        ))
 end
 
 struct BoolsExactEntropy{W} <: LossConfig{Bools{W}} end
 to_subpath(::BoolsExactEntropy) = ["exact_entropy"]
 function create_loss_manager(rs::RunState, p::BoolsExactEntropy{W}, generation) where W
     println_flush(rs.io, "Building computation graph for $(p)...")
-    time_build_loss = @elapsed loss = 
+    time_build_loss = @elapsed loss =
         neg_entropy(generation.v, [DistUInt{W}(i) for i in 0:2^W-1])
     println(rs.io, "  $(time_build_loss) seconds")
     println(rs.io)
@@ -1035,7 +1045,7 @@ function generation_params_emit_stats(rs::RunState, p::LangBespokeSTLCGenerator,
 
     path = joinpath(rs.out_dir, "$(s)_Generator.v")
     open(path, "w") do file
-        println(file, to_coq(rs, p, prog))
+        println(file, to_coq(rs, p, prog; output_dir=rs.out_dir))
     end
     println_flush(rs.io, "Saved Coq generator to $(path)")
     println_flush(rs.io)
@@ -1092,7 +1102,7 @@ struct MLELossConfig{T} <: LossConfig{T}
     metric::Function
     target_dist::TargetDist
 end
-to_subpath(p::MLELossConfig) = ["mle",string(nameof(p.metric)), name(p.target_dist)]
+to_subpath(p::MLELossConfig) = ["mle", string(nameof(p.metric)), name(p.target_dist)]
 function create_loss_manager(rs::RunState, p::MLELossConfig, generation)
     println_flush(rs.io, "Building computation graph for $(p)...")
     time_build_loss = @elapsed begin
@@ -1127,10 +1137,10 @@ struct Target4321 <: TargetDist end
 name(::Target4321) = "target4321"
 function metric_loss(metric::Dist, ::Target4321)
     mle_loss([
-        BoolToMax(prob_equals(metric, DistUInt32(0)), weight=.4),
-        BoolToMax(prob_equals(metric, DistUInt32(1)), weight=.3),
-        BoolToMax(prob_equals(metric, DistUInt32(2)), weight=.2),
-        BoolToMax(prob_equals(metric, DistUInt32(3)), weight=.1),
+        BoolToMax(prob_equals(metric, DistUInt32(0)), weight=0.4),
+        BoolToMax(prob_equals(metric, DistUInt32(1)), weight=0.3),
+        BoolToMax(prob_equals(metric, DistUInt32(2)), weight=0.2),
+        BoolToMax(prob_equals(metric, DistUInt32(3)), weight=0.1),
     ])
 end
 
@@ -1138,9 +1148,9 @@ struct Target333 <: TargetDist end
 name(::Target333) = "target333"
 function metric_loss(metric::Dist, ::Target333)
     mle_loss([
-        BoolToMax(prob_equals(metric, DistUInt32(0)), weight=.33),
-        BoolToMax(prob_equals(metric, DistUInt32(1)), weight=.33),
-        BoolToMax(prob_equals(metric, DistUInt32(2)), weight=.33),
+        BoolToMax(prob_equals(metric, DistUInt32(0)), weight=0.33),
+        BoolToMax(prob_equals(metric, DistUInt32(1)), weight=0.33),
+        BoolToMax(prob_equals(metric, DistUInt32(2)), weight=0.33),
     ])
 end
 

@@ -9,18 +9,25 @@ end
 
 type_to_coq(x::L.Enum) = x.name
 
-function to_coq(rs::RunState, p::GenerationParams{T}, prog::L.Program)::String where T
+function to_coq(rs::RunState, p::GenerationParams{T}, prog::L.Program; output_dir::AbstractString=".")::String where T
     prim_map, loc_map, tuple_tys, enums = check_tree(prog)
+
+    all_cases = []
+    weights = []
 
     vals = compute(rs.var_vals, values(rs.adnodes_of_interest))
     adnodes_vals = Dict(s => vals[adnode] for (s, adnode) in rs.adnodes_of_interest)
 
     matchid_to_cases = Dict()
     for (name, val) in adnodes_vals
-        println("name: $(name) val: $(val)")
+        # println("name: $(name) val: $(val)")
         matchid, case = split(name, "%%")
         # println(case)
-        case = if case == "" "tt" else "(" * join([value_to_coq(eval(Meta.parse(x))) for x in split(case, "%")], ", ") * ")" end
+        case = if case == ""
+            "tt"
+        else
+            "(" * join([value_to_coq(eval(Meta.parse(x))) for x in split(case, "%")], ", ") * ")"
+        end
         val = hundredths(val)
         push!(get!(matchid_to_cases, matchid, []), (case, val))
     end
@@ -36,24 +43,24 @@ function to_coq(rs::RunState, p::GenerationParams{T}, prog::L.Program)::String w
     indent = 0
     function e!(s=""; indent_=nothing)
         if isnothing(indent_)
-            indent_  = indent
+            indent_ = indent
         end
         segment = if s == ""
             # don't indent empty line
             ""
         else
-            "  " ^ indent_ * s
+            "  "^indent_ * s
         end
         push!(segments, segment)
     end
     # Emit with outer indent
-    o!(s) = e!(s, indent_=indent-1)
+    o!(s) = e!(s, indent_=indent - 1)
     # Append to last line
     function a!(s)
         @assert !isempty(segments)
         # if starting a new line, include indent
         if segments[end] == "" || segments[end][end] == '\n'
-            s = "  " ^ indent * s
+            s = "  "^indent * s
         end
         segments[end] = segments[end] * s
     end
@@ -237,11 +244,12 @@ function to_coq(rs::RunState, p::GenerationParams{T}, prog::L.Program)::String w
         a!(")")
     end
 
-    coq_tuple(names) = if isempty(names)
-        "tt"
-    else
-        "($(join(names, ", ")))"
-    end
+    coq_tuple(names) =
+        if isempty(names)
+            "tt"
+        else
+            "($(join(names, ", ")))"
+        end
 
     function ematch!(name, dependents)
         a!("match (")
@@ -253,11 +261,16 @@ function to_coq(rs::RunState, p::GenerationParams{T}, prog::L.Program)::String w
             end
         end
         a!(") with")
-        
+
         if haskey(matchid_to_cases, name)
             cases = matchid_to_cases[name]
             cases = sort(cases)
             for (name, w) in cases
+                # println("name: $(name) w: $(w)")
+                # df = DataFrame(name=["Alice", "Bob"], age=[25, 30])
+                push!(all_cases, name)
+                push!(weights, w)
+
                 e!("| $(name) => $(w)")
             end
             if !isempty(dependents)
@@ -268,7 +281,7 @@ function to_coq(rs::RunState, p::GenerationParams{T}, prog::L.Program)::String w
         end
         e!("end")
     end
-    
+
     function visit(x::L.Frequency)
         name = prim_map[x]
         if length(x.branches) == 1
@@ -313,7 +326,7 @@ function to_coq(rs::RunState, p::GenerationParams{T}, prog::L.Program)::String w
             e!("]) (fun n$(n) =>")
         end
         e!("  returnGen ($(join(["n$(n)" for n in twopowers(x.width)], " + ")))")
-        e!(")" ^ (x.width * 2))
+        e!(")"^(x.width * 2))
     end
 
     function visit(x::L.GenZ)
@@ -329,7 +342,7 @@ function to_coq(rs::RunState, p::GenerationParams{T}, prog::L.Program)::String w
             e!("]) (fun n$(n) =>")
         end
         e!("  returnGen ($(join(["n$(n)" for n in twopowers(x.width)], " + ")))%Z")
-        e!(")" ^ (x.width * 2))
+        e!(")"^(x.width * 2))
     end
 
     function visit(x::L.GenBool)
@@ -413,6 +426,9 @@ function to_coq(rs::RunState, p::GenerationParams{T}, prog::L.Program)::String w
     visit(prog)
 
     e!(after)
+
+    df = DataFrame(case=all_cases, weight=weights)
+    CSV.write(joinpath(output_dir, "matched_cases.csv"), df)
 
     join(segments, "\n")
 end

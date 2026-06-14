@@ -1,6 +1,8 @@
 using Dice
 using Dates
 using Random
+using CSV
+using DataFrames
 
 mutable struct RunState
     var_vals::Valuation

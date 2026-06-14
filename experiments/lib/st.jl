@@ -46,17 +46,84 @@ function satisfies_stickyness(t::sKVTree.t)
 end
 
 function satisfies_stickyness_simple(t::sKVTree.t)
-    function check_sticky(t)
+    function is_sticky(t)
         @match(t, [
             T(v, left, right) -> begin
-                if (matches(left, :T) & matches(right, :T))
+                @dice_ite if (matches(left, :T) & matches(right, :T))
                     false
                 else
-                    check_sticky(left) & check_sticky(right)
+                    is_sticky(left) & is_sticky(right)
                 end
             end,
             E() -> true
         ])
     end
-    check_sticky(t)
+    is_sticky(t)
+end
+
+# > shaped tree, with size 4
+
+function satisfies_zigzag(t::sKVTree.t)
+    function zigs_and_zags(node::sKVTree.t, step::Int)
+        @match(node, [
+            E() -> true,
+            T(v, left, right) -> begin
+                if step <= 2
+                    @dice_ite if matches(left, :E) & matches(right, :T)
+                        zigs_and_zags(right, step + 1)
+                    else
+                        false
+                    end
+                elseif step <= 4
+                    @dice_ite if matches(left, :T) & matches(right, :E)
+                        if step == 4
+                            true
+                        else
+                            zigs_and_zags(left, step + 1)
+                        end
+                    else
+                        false
+                    end
+                else
+                    true
+                end
+            end
+        ])
+    end
+
+    zigs_and_zags(t, 1)
+end
+
+# > shaped tree, arbitrary size, arbitary pivot
+
+function satisfies_zigzag_arbitrary_pivot(t::sKVTree.t)
+    # Checks spine follows pattern: right* then left*
+    # has_switched_to_left tracks whether we've seen a left step yet
+    function zigs_and_zags(node::sKVTree.t, has_switched_to_left::Bool)
+        @match(node, [
+            E() -> true,
+            T(v, left, right) -> begin
+                is_right_step = matches(left, :E) & matches(right, :T)
+                is_left_step = matches(left, :T) & matches(right, :E)
+                both_empty = matches(left, :E) & matches(right, :E)
+                
+                @dice_ite if is_right_step
+                    @dice_ite if has_switched_to_left
+                        false
+                    else
+                        zigs_and_zags(right, false)
+                    end
+                elseif is_left_step
+                    zigs_and_zags(left, true)
+                elseif both_empty
+                    true
+                else
+                    # 2 children
+                    false
+                end
+            end
+        ])
+    end
+
+    zigs_and_zags(t, false)
 end

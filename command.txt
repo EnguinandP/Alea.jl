@@ -9,7 +9,10 @@ julia --project experiments/tool.jl -f \
 
 
 stickiness - validity
-
+julia --project experiments/tool.jl -f 
+  "LangDerivedGenerator{ST}(Main.sKVTree.t,Pair{Type,Integer}[Main.sKVTree.t=>4],1,3)" 
+  "Pair{SatisfyPropertyLoss{ST},Float64}[SatisfyPropertyLoss{ST}(satisfies_stickyness_simple)=>0.3]" 
+  2000 0.1
 julia --project experiments/tool.jl -f \
   "LangSiblingDerivedGenerator{ST}(Main.sKVTree.t,Pair{Type,Integer}[Main.sKVTree.t=>4],2,3)" \
   "Pair{SatisfyPropertyLoss{ST},Float64}[SatisfyPropertyLoss{ST}(satisfies_stickyness)=>0.03]" \
