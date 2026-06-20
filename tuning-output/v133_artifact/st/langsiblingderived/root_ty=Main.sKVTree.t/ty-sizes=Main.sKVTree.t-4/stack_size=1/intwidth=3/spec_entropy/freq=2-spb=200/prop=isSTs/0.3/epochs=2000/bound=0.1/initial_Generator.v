@@ -268,10 +268,10 @@ QuickChick test_is_sticky.
 
 Definition numRuns := 1000.
 
-Definition count_sticky (prop : ( Tree -> bool)) :=
+Definition count_test (prop : ( Tree -> bool)) :=
   forAll gSized (fun t : Tree =>
     collect (if prop t then true else false) true).
 
-(* QuickChickWith (updMaxSuccess stdArgs numRuns) (count_sticky is_sticky ). *)
-QuickChickWith (updMaxSuccess stdArgs numRuns) (count_sticky is_left_sticky ).
+(* QuickChickWith (updMaxSuccess stdArgs numRuns) (count_test is_sticky ). *)
+QuickChickWith (updMaxSuccess stdArgs numRuns) (count_test is_left_sticky ).
           

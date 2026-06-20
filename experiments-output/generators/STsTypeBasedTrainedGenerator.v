@@ -212,10 +212,10 @@ QuickChick test_is_sticky.
 
 Definition numRuns := 1000.
 
-Definition count_sticky :=
+Definition count_test :=
   forAll gSized (fun t : Tree =>
     collect (if is_sticky t then true else false) true).
 
-QuickChickWith (updMaxSuccess stdArgs numRuns) count_sticky.
+QuickChickWith (updMaxSuccess stdArgs numRuns) count_test.
 
 Sample gSized.

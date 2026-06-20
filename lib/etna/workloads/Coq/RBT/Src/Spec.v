@@ -67,6 +67,10 @@ Definition isRBT (t: Tree) : bool :=
     isBST t && consistentBlackHeight t && noRedRed t
 .
 
+Definition isRBTunordered (t: Tree) : bool :=
+  consistentBlackHeight t && noRedRed t
+.
+
 Fixpoint toList (t: Tree) : list (Z * Z) :=
     match t with
     | E => nil

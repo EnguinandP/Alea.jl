@@ -1,0 +1,244 @@
+QuickChecking (count_test is_sticky)
+730 : true
+270 : false
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.429655s
+
+QuickChecking (count_test is_left_sticky)
+815 : false
+185 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.313655s
+
+QuickChecking (count_test is_right_sticky)
+820 : false
+180 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.298610s
+
+QuickChecking (count_test is_rl_balanced)
+762 : false
+238 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.327546s
+
+QuickChecking (count_test (is_height_x 0))
+903 : false
+97 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.330724s
+
+QuickChecking (count_test (is_height_x 1))
+967 : false
+33 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.362592s
+
+QuickChecking (count_test (is_height_x 2))
+968 : false
+32 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.378478s
+
+QuickChecking (count_test (is_height_x 3))
+960 : false
+40 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.288684s
+
+QuickChecking (count_test (is_height_x 4))
+967 : false
+33 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.298566s
+
+QuickChecking (count_test (is_height_x 5))
+964 : false
+36 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.308451s
+
+QuickChecking (count_test (is_height_x 6))
+974 : false
+26 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.294243s
+
+QuickChecking (count_test (is_height_x 7))
+973 : false
+27 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.286788s
+
+QuickChecking (count_test (is_height_x 8))
+936 : false
+64 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.352863s
+
+QuickChecking (count_test (is_height_x 9))
+863 : false
+137 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.323183s
+
+QuickChecking (count_test (is_height_x 10))
+578 : false
+422 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.358661s
+
+QuickChecking (count_test (is_sticky_and_height_x 0))
+896 : false
+104 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.332787s
+
+QuickChecking (count_test (is_sticky_and_height_x 1))
+955 : false
+45 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.287568s
+
+QuickChecking (count_test (is_sticky_and_height_x 2))
+973 : false
+27 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.290548s
+
+QuickChecking (count_test (is_sticky_and_height_x 3))
+961 : false
+39 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.292027s
+
+QuickChecking (count_test (is_sticky_and_height_x 4))
+973 : false
+27 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.312588s
+
+QuickChecking (count_test (is_sticky_and_height_x 5))
+964 : false
+36 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.294402s
+
+QuickChecking (count_test (is_sticky_and_height_x 6))
+981 : false
+19 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.321689s
+
+QuickChecking (count_test (is_sticky_and_height_x 7))
+978 : false
+22 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.528924s
+
+QuickChecking (count_test (is_sticky_and_height_x 8))
+930 : false
+70 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.330683s
+
+QuickChecking (count_test (is_sticky_and_height_x 9))
+911 : false
+89 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.287626s
+
+QuickChecking (count_test (is_sticky_and_height_x 10))
+773 : false
+227 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.282174s
+
+QuickChecking (count_test (is_prop_and_height_x is_rl_balanced 0))
+885 : false
+115 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.286834s
+
+QuickChecking (count_test (is_prop_and_height_x is_rl_balanced 1))
+950 : false
+50 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.294200s
+
+QuickChecking (count_test (is_prop_and_height_x is_rl_balanced 2))
+1000 : false
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.298704s
+
+QuickChecking (count_test (is_prop_and_height_x is_rl_balanced 3))
+977 : false
+23 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.311175s
+
+QuickChecking (count_test (is_prop_and_height_x is_rl_balanced 4))
+1000 : false
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.292064s
+
+QuickChecking (count_test (is_prop_and_height_x is_left_sticky 0))
+896 : false
+104 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.323901s
+
+QuickChecking (count_test (is_prop_and_height_x is_left_sticky 1))
+953 : false
+47 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.318776s
+
+QuickChecking (count_test (is_prop_and_height_x is_left_sticky 2))
+985 : false
+15 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.287941s
+
+QuickChecking (count_test (is_prop_and_height_x is_left_sticky 3))
+992 : false
+8 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.344321s
+
+QuickChecking (count_test (is_prop_and_height_x is_left_sticky 4))
+993 : false
+7 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.406150s
+
+QuickChecking (count_test (is_prop_and_height_x is_right_sticky 0))
+901 : false
+99 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.310837s
+
+QuickChecking (count_test (is_prop_and_height_x is_right_sticky 1))
+958 : false
+42 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.329839s
+
+QuickChecking (count_test (is_prop_and_height_x is_right_sticky 2))
+976 : false
+24 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.392951s
+
+QuickChecking (count_test (is_prop_and_height_x is_right_sticky 3))
+988 : false
+12 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.433316s
+
+QuickChecking (count_test (is_prop_and_height_x is_right_sticky 4))
+996 : false
+4 : true
++++ Passed 1000 tests (0 discards)
+Time Elapsed: 0.297594s
+

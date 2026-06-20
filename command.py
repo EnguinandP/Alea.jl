@@ -3,12 +3,12 @@ import argparse
 import shlex
 
 parser = argparse.ArgumentParser(description="run a Loaded Dice command")
-parser.add_argument("name", default="ST", help="name of generator")
-parser.add_argument("type", default="sKVTree", help="type for generator")
-parser.add_argument("method", default="SpecEntropy", help="[SpecEntropy|SatisfyPropertyLoss]")
+parser.add_argument("--name", default="ST", help="name of generator")
+parser.add_argument("--type", default="sKVTree", help="type for generator")
+parser.add_argument("--method", default="SpecEntropy", help="[SpecEntropy|SatisfyPropertyLoss]")
 parser.add_argument("--prop", default="satisfies_stickyness_simple", help="type for generator")
 parser.add_argument("--valid", default="isSTs", help="specify what is valid for SpecEntropy")
-parser.add_argument("-s", "--sibling", action="store_true", default=True, help="using sibling derive or not")
+parser.add_argument("-ns", "--nosibling", action="store_false", default=True, help="using sibling derive or not") # doesn't seem to be able to be used without sibling
 parser.add_argument("--size", type=int, default=4, help="initial calling size of tree")
 parser.add_argument("--stack", type=int, default=1, help="stack size")
 parser.add_argument("--intwidth", type=int, default=3, help="intwidth")
@@ -18,7 +18,7 @@ parser.add_argument("--bound", type=float, default=0.1, help="affects the most e
 
 args = parser.parse_args()
 
-if (args.sibling):
+if (args.nosibling):
     derive = "LangSiblingDerivedGenerator"
 else:
     derive = "LangDerivedGenerator"

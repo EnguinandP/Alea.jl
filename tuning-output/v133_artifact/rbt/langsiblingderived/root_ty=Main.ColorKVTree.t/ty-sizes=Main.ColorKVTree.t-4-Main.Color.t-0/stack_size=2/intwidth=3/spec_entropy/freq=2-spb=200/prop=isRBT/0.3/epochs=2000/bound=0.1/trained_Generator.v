@@ -7,7 +7,9 @@ Import MonadNotation.
 From Coq Require Import List.
 Import ListNotations.
 
-From RBT Require Import Impl Spec.
+Require Extraction.
+
+From RBT Require Import Impl.
 
 Inductive LeafCtorTree :=
   | LeafCtorTree_E.
@@ -378,86 +380,107 @@ Definition gSized :=
 
 (* --------------------- Tests --------------------- *)
 
-Definition test_prop_InsertValid :=  
-    forAll gSized (fun t =>    
-    forAll arbitrary (fun k =>
-    forAll arbitrary (fun v =>
-        (prop_InsertValid t k v)))).
-
-(*! QuickChick test_prop_InsertValid. *)
-
-Definition test_prop_DeleteValid :=  
-    forAll gSized (fun t =>    
-    forAll arbitrary (fun k =>
-        prop_DeleteValid t k)).
-
-(*! QuickChick test_prop_DeleteValid. *)
-
-Definition test_prop_InsertPost :=  
-    forAll gSized (fun t =>    
-    forAll arbitrary (fun k =>
-    forAll arbitrary (fun k' =>
-     forAll arbitrary (fun v =>
-        prop_InsertPost t k k' v)))).
-
-(*! QuickChick test_prop_InsertPost. *)
-
-Definition test_prop_DeletePost := 
-    forAll gSized (fun t =>    
-    forAll arbitrary (fun k =>
-    forAll arbitrary (fun k' =>
-        prop_DeletePost t k k'))).
-
-(*! QuickChick test_prop_DeletePost. *)
+(* -- "No red node has a red parent." *)
+Fixpoint noRedRed (t: Tree) : bool :=
+    let fix blackRoot (t: Tree) : bool :=
+        match t with
+        | (T R _ _ _ _) => false
+        | _ => true
+        end in
+    match t with
+    | E => true
+    | (T B a _ _ b) => noRedRed a && noRedRed b
+    | (T R a _ _ b) => blackRoot a && blackRoot b && noRedRed a && noRedRed b
+    end.
     
-Definition test_prop_InsertModel :=  
-    forAll gSized (fun t =>    
-    forAll arbitrary (fun k =>
-    forAll arbitrary (fun v =>
-        prop_InsertModel t k v))).
 
-(*! QuickChick test_prop_InsertModel. *)
-    
-Definition test_prop_DeleteModel :=  
-    forAll gSized (fun t =>    
-    forAll arbitrary (fun k =>
-            prop_DeleteModel t k)).
+(* -- "Every path from the root to an empty node contains the same number of black nodes." *)
+Definition consistentBlackHeight  (t: Tree) : bool :=
+    let fix go (t: Tree) : (bool * Z) :=
+        match t with
+        | E => (true, 1%Z)
+        | T rb a x _ b =>
+            let (aBool, aHeight) := go a in
+            let (bBool, bHeight) := go b in
+            let isBlack (rb: Color) : Z :=
+                match rb with
+                | B => 1%Z
+                | R => 0%Z
+                end in
+            
+        (andb (andb aBool bBool) (Z.eqb aHeight bHeight), (aHeight + isBlack rb)%Z)
+        end in
+    fst (go t).
 
-(*! QuickChick test_prop_DeleteModel. *)
+(* Definition numRuns := 1000. *)
 
-Definition test_prop_InsertInsert :=  
-    forAll gSized (fun t =>    
-    forAll arbitrary (fun k =>
-    forAll arbitrary (fun k' =>
-    forAll arbitrary (fun v =>
-    forAll arbitrary (fun v' =>     
-        prop_InsertInsert t k k' v v'))))).
+Definition isRBTunordered (t: Tree) : bool :=
+  consistentBlackHeight t && noRedRed t
+.
 
-(*! QuickChick test_prop_InsertInsert. *)
-    
-Definition test_prop_InsertDelete := 
-    forAll gSized (fun t =>    
-    forAll arbitrary (fun k =>
-    forAll arbitrary (fun k' =>
-    forAll arbitrary (fun v =>
-        prop_InsertDelete t k k' v)))).
+Definition count_test (prop : ( Tree -> bool)) :=
+  forAll gSized (fun t : Tree =>
+    label (match (size t, prop t) with
+      | (0, true) => "0 true"
+      | (0, false) => "0 false"
+      | (1, true) => "1 true"
+      | (1, false) => "1 false"
+      | (2, true) => "2 true"
+      | (2, false) => "2 false"
+      | (3, true) => "3 true"
+      | (3, false) => "3 false"
+      | (4, true) => "4 true"
+      | (4, false) => "4 false"
+      | (5, true) => "5 true"
+      | (5, false) => "5 false"
+      | (6, true) => "6 true"
+      | (6, false) => "6 false"
+      | (7, true) => "7 true"
+      | (7, false) => "7 false"
+      | (8, true) => "8 true"
+      | (8, false) => "8 false"
+      | (9, true) => "9 true"
+      | (9, false) => "9 false"
+      | (10, true) => "10 true"
+      | (10, false) => "10 false"
+      | (_, true) => "other true"
+      | (_, false) => "other false"
+      end
+      ) true).
 
-(*! QuickChick test_prop_InsertDelete. *)
-    
-Definition test_prop_DeleteInsert := 
-    forAll gSized (fun t =>    
-    forAll arbitrary (fun k =>
-    forAll arbitrary (fun k' =>
-    forAll arbitrary (fun v' =>
-        prop_DeleteInsert t k k' v')))).
+(* Print Args.
+About MkArgs.    
 
-(*! QuickChick test_prop_DeleteInsert. *)
-    
-Definition test_prop_DeleteDelete :=  
-    forAll gSized (fun t =>    
-    forAll arbitrary (fun k =>
-    forAll arbitrary (fun k' =>
-        prop_DeleteDelete t k k'))).
+Definition seededArgs : Args := 
+  (* MkArgs
+   (Some (mkRandomSeed 42, 0))
+   100
+   200
+   10
+   7
+   true
+   false. *)
+  {|
+    replay := Some (mkRandomSeed 42, 0);
+    maxSuccess := 100;
+    maxDiscard := 200;
+    maxShrinks := 10;
+    maxSize := 5;
+    chatty := true;
+    analysis := true |}. *)
 
-(*! QuickChick test_prop_DeleteDelete. *)
-          
+
+(* Extraction "rbt" gSized. *)
+
+QuickChickWith (updMaxSuccess stdArgs 1000) (count_test isRBTunordered).
+
+(* QuickChickWith seededArgs (count_test isRBTunordered). *)
+
+(* Sample gSized. *)
+
+(* Compute (run gSized 5 newRandomSeed). *)
+(* Check gSized. *)
+(* Sample (resize 4 gSized). *)
+
+
+

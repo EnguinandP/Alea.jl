@@ -1,171 +1,171 @@
-QuickChecking (count_sticky is_sticky)
+QuickChecking (count_test is_sticky)
 884 : true
 116 : false
 +++ Passed 1000 tests (0 discards)
 Time Elapsed: 0.261698s
 
-QuickChecking (count_sticky is_left_sticky)
+QuickChecking (count_test is_left_sticky)
 720 : false
 280 : true
 +++ Passed 1000 tests (0 discards)
 Time Elapsed: 0.178958s
 
-QuickChecking (count_sticky is_right_sticky)
+QuickChecking (count_test is_right_sticky)
 699 : false
 301 : true
 +++ Passed 1000 tests (0 discards)
 Time Elapsed: 0.169719s
 
-QuickChecking (count_sticky is_rl_balanced)
+QuickChecking (count_test is_rl_balanced)
 706 : false
 294 : true
 +++ Passed 1000 tests (0 discards)
 Time Elapsed: 0.181388s
 
-QuickChecking (count_sticky (is_height_x 0))
+QuickChecking (count_test (is_height_x 0))
 905 : false
 95 : true
 +++ Passed 1000 tests (0 discards)
 Time Elapsed: 0.178814s
 
-QuickChecking (count_sticky (is_height_x 1))
+QuickChecking (count_test (is_height_x 1))
 957 : false
 43 : true
 +++ Passed 1000 tests (0 discards)
 Time Elapsed: 0.200471s
 
-QuickChecking (count_sticky (is_height_x 2))
+QuickChecking (count_test (is_height_x 2))
 932 : false
 68 : true
 +++ Passed 1000 tests (0 discards)
 Time Elapsed: 0.233252s
 
-QuickChecking (count_sticky (is_height_x 3))
+QuickChecking (count_test (is_height_x 3))
 802 : false
 198 : true
 +++ Passed 1000 tests (0 discards)
 Time Elapsed: 0.180034s
 
-QuickChecking (count_sticky (is_height_x 4))
+QuickChecking (count_test (is_height_x 4))
 607 : true
 393 : false
 +++ Passed 1000 tests (0 discards)
 Time Elapsed: 0.175218s
 
-QuickChecking (count_sticky (is_sticky_and_height_x 0))
+QuickChecking (count_test (is_sticky_and_height_x 0))
 902 : false
 98 : true
 +++ Passed 1000 tests (0 discards)
 Time Elapsed: 0.178565s
 
-QuickChecking (count_sticky (is_sticky_and_height_x 1))
+QuickChecking (count_test (is_sticky_and_height_x 1))
 962 : false
 38 : true
 +++ Passed 1000 tests (0 discards)
 Time Elapsed: 0.178923s
 
-QuickChecking (count_sticky (is_sticky_and_height_x 2))
+QuickChecking (count_test (is_sticky_and_height_x 2))
 948 : false
 52 : true
 +++ Passed 1000 tests (0 discards)
 Time Elapsed: 0.178366s
 
-QuickChecking (count_sticky (is_sticky_and_height_x 3))
+QuickChecking (count_test (is_sticky_and_height_x 3))
 822 : false
 178 : true
 +++ Passed 1000 tests (0 discards)
 Time Elapsed: 0.188340s
 
-QuickChecking (count_sticky (is_sticky_and_height_x 4))
+QuickChecking (count_test (is_sticky_and_height_x 4))
 518 : true
 482 : false
 +++ Passed 1000 tests (0 discards)
 Time Elapsed: 0.225428s
 
-QuickChecking (count_sticky (is_prop_and_height_x is_rl_balanced 0))
+QuickChecking (count_test (is_prop_and_height_x is_rl_balanced 0))
 906 : false
 94 : true
 +++ Passed 1000 tests (0 discards)
 Time Elapsed: 0.248739s
 
-QuickChecking (count_sticky (is_prop_and_height_x is_rl_balanced 1))
+QuickChecking (count_test (is_prop_and_height_x is_rl_balanced 1))
 954 : false
 46 : true
 +++ Passed 1000 tests (0 discards)
 Time Elapsed: 0.231216s
 
-QuickChecking (count_sticky (is_prop_and_height_x is_rl_balanced 2))
+QuickChecking (count_test (is_prop_and_height_x is_rl_balanced 2))
 1000 : false
 +++ Passed 1000 tests (0 discards)
 Time Elapsed: 0.243418s
 
-QuickChecking (count_sticky (is_prop_and_height_x is_rl_balanced 3))
+QuickChecking (count_test (is_prop_and_height_x is_rl_balanced 3))
 915 : false
 85 : true
 +++ Passed 1000 tests (0 discards)
 Time Elapsed: 0.251603s
 
-QuickChecking (count_sticky (is_prop_and_height_x is_rl_balanced 4))
+QuickChecking (count_test (is_prop_and_height_x is_rl_balanced 4))
 958 : false
 42 : true
 +++ Passed 1000 tests (0 discards)
 Time Elapsed: 0.227650s
 
-QuickChecking (count_sticky (is_prop_and_height_x is_left_sticky 0))
+QuickChecking (count_test (is_prop_and_height_x is_left_sticky 0))
 900 : false
 100 : true
 +++ Passed 1000 tests (0 discards)
 Time Elapsed: 0.242499s
 
-QuickChecking (count_sticky (is_prop_and_height_x is_left_sticky 1))
+QuickChecking (count_test (is_prop_and_height_x is_left_sticky 1))
 952 : false
 48 : true
 +++ Passed 1000 tests (0 discards)
 Time Elapsed: 0.202360s
 
-QuickChecking (count_sticky (is_prop_and_height_x is_left_sticky 2))
+QuickChecking (count_test (is_prop_and_height_x is_left_sticky 2))
 971 : false
 29 : true
 +++ Passed 1000 tests (0 discards)
 Time Elapsed: 0.226001s
 
-QuickChecking (count_sticky (is_prop_and_height_x is_left_sticky 3))
+QuickChecking (count_test (is_prop_and_height_x is_left_sticky 3))
 961 : false
 39 : true
 +++ Passed 1000 tests (0 discards)
 Time Elapsed: 0.260398s
 
-QuickChecking (count_sticky (is_prop_and_height_x is_left_sticky 4))
+QuickChecking (count_test (is_prop_and_height_x is_left_sticky 4))
 924 : false
 76 : true
 +++ Passed 1000 tests (0 discards)
 Time Elapsed: 0.235267s
 
-QuickChecking (count_sticky (is_prop_and_height_x is_right_sticky 0))
+QuickChecking (count_test (is_prop_and_height_x is_right_sticky 0))
 915 : false
 85 : true
 +++ Passed 1000 tests (0 discards)
 Time Elapsed: 0.243780s
 
-QuickChecking (count_sticky (is_prop_and_height_x is_right_sticky 1))
+QuickChecking (count_test (is_prop_and_height_x is_right_sticky 1))
 952 : false
 48 : true
 +++ Passed 1000 tests (0 discards)
 Time Elapsed: 0.251053s
 
-QuickChecking (count_sticky (is_prop_and_height_x is_right_sticky 2))
+QuickChecking (count_test (is_prop_and_height_x is_right_sticky 2))
 974 : false
 26 : true
 +++ Passed 1000 tests (0 discards)
 Time Elapsed: 0.239840s
 
-QuickChecking (count_sticky (is_prop_and_height_x is_right_sticky 3))
+QuickChecking (count_test (is_prop_and_height_x is_right_sticky 3))
 950 : false
 50 : true
 +++ Passed 1000 tests (0 discards)
 Time Elapsed: 0.185689s
 
-QuickChecking (count_sticky (is_prop_and_height_x is_right_sticky 4))
+QuickChecking (count_test (is_prop_and_height_x is_right_sticky 4))
 950 : false
 50 : true
 +++ Passed 1000 tests (0 discards)

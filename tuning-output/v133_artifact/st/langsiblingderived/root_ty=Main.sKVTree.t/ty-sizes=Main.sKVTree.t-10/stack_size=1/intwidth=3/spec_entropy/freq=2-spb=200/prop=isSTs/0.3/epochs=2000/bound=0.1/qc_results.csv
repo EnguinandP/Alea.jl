@@ -1,0 +1,42 @@
+test,true,false,time
+is_sticky,727,273,0.289495
+is_left_sticky,201,799,0.292054
+is_right_sticky,198,802,0.355434
+is_rl_balanced,235,765,0.302263
+(is_height_x 0),89,911,0.298563
+(is_height_x 1),44,956,0.292469
+(is_height_x 2),43,957,0.303453
+(is_height_x 3),33,967,0.291803
+(is_height_x 4),44,956,0.296688
+(is_height_x 5),25,975,0.352855
+(is_height_x 6),34,966,0.289469
+(is_height_x 7),32,968,0.294347
+(is_height_x 8),32,968,0.448241
+(is_height_x 9),102,898,0.289679
+(is_height_x 10),532,468,0.292029
+(is_sticky_and_height_x 0),101,899,0.287909
+(is_sticky_and_height_x 1),46,954,0.360154
+(is_sticky_and_height_x 2),45,955,0.314369
+(is_sticky_and_height_x 3),31,969,0.364887
+(is_sticky_and_height_x 4),21,979,0.303014
+(is_sticky_and_height_x 5),34,966,0.308394
+(is_sticky_and_height_x 6),31,969,0.309528
+(is_sticky_and_height_x 7),24,976,0.449577
+(is_sticky_and_height_x 8),26,974,0.331602
+(is_sticky_and_height_x 9),68,932,0.442371
+(is_sticky_and_height_x 10),277,723,0.327814
+(is_prop_and_height_x is_rl_balanced 0),118,882,0.305602
+(is_prop_and_height_x is_rl_balanced 1),46,954,0.341507
+(is_prop_and_height_x is_rl_balanced 2),,1000,0.308802
+(is_prop_and_height_x is_rl_balanced 3),12,988,0.364527
+(is_prop_and_height_x is_rl_balanced 4),,1000,0.368638
+(is_prop_and_height_x is_left_sticky 0),102,898,0.300100
+(is_prop_and_height_x is_left_sticky 1),51,949,0.298395
+(is_prop_and_height_x is_left_sticky 2),24,976,0.292769
+(is_prop_and_height_x is_left_sticky 3),9,991,0.288052
+(is_prop_and_height_x is_left_sticky 4),3,997,0.293436
+(is_prop_and_height_x is_right_sticky 0),104,896,0.291775
+(is_prop_and_height_x is_right_sticky 1),49,951,0.295260
+(is_prop_and_height_x is_right_sticky 2),18,982,0.322016
+(is_prop_and_height_x is_right_sticky 3),9,991,0.290022
+(is_prop_and_height_x is_right_sticky 4),4,996,0.297329

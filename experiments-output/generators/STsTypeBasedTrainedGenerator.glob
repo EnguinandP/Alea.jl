@@ -458,7 +458,7 @@ R5595:5595 Generators.STsTypeBasedTrainedGenerator <> t:53 var
 R5561:5566 Generators.STsTypeBasedTrainedGenerator <> gSized def
 R5611:5624 Generators.STsTypeBasedTrainedGenerator <> test_is_sticky def
 def 5639:5645 <> numRuns
-def 5668:5679 <> count_sticky
+def 5668:5679 <> count_test
 R5686:5691 QuickChick.Checker <> forAll def
 R5709:5712 Generators.STsTypeBasedTrainedGenerator <> Tree ind
 binder 5705:5705 <> t:54
@@ -469,7 +469,7 @@ R5743:5743 Generators.STsTypeBasedTrainedGenerator <> t:54 var
 R5760:5764 Coq.Init.Datatypes <> false constr
 R5750:5753 Coq.Init.Datatypes <> true constr
 R5693:5698 Generators.STsTypeBasedTrainedGenerator <> gSized def
-R5822:5833 Generators.STsTypeBasedTrainedGenerator <> count_sticky def
+R5822:5833 Generators.STsTypeBasedTrainedGenerator <> count_test def
 R5791:5803 QuickChick.Test <> updMaxSuccess def
 R5813:5819 Generators.STsTypeBasedTrainedGenerator <> numRuns def
 R5805:5811 QuickChick.Test <> stdArgs def

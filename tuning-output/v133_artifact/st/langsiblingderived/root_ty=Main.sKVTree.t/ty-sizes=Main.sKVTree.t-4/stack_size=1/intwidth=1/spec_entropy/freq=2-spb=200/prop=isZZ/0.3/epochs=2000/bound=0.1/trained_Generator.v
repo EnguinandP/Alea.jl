@@ -222,40 +222,40 @@ QuickChick test_is_sticky.
 
 Definition numRuns := 1000.
 
-Definition count_sticky (prop : ( Tree -> bool)) :=
+Definition count_test (prop : ( Tree -> bool)) :=
   forAll gSized (fun t : Tree =>
     collect (if prop t then true else false) true).
 
 Sample gSized.
 
-QuickChickWith (updMaxSuccess stdArgs numRuns) (count_sticky is_sticky ).
-(* QuickChickWith (updMaxSuccess stdArgs numRuns) (count_sticky is_left_sticky ).
-QuickChickWith (updMaxSuccess stdArgs numRuns) (count_sticky is_right_sticky ).
-QuickChickWith (updMaxSuccess stdArgs numRuns) (count_sticky is_rl_balanced ).
-QuickChickWith (updMaxSuccess stdArgs numRuns) (count_sticky (is_height_x 0) ).
-QuickChickWith (updMaxSuccess stdArgs numRuns) (count_sticky (is_height_x 1) ).
-QuickChickWith (updMaxSuccess stdArgs numRuns) (count_sticky (is_height_x 2) ).
-QuickChickWith (updMaxSuccess stdArgs numRuns) (count_sticky (is_height_x 3) ).
-QuickChickWith (updMaxSuccess stdArgs numRuns) (count_sticky (is_height_x 4) ).
-QuickChickWith (updMaxSuccess stdArgs numRuns) (count_sticky (is_sticky_and_height_x 0) ).
-QuickChickWith (updMaxSuccess stdArgs numRuns) (count_sticky (is_sticky_and_height_x 1) ).
-QuickChickWith (updMaxSuccess stdArgs numRuns) (count_sticky (is_sticky_and_height_x 2) ).
-QuickChickWith (updMaxSuccess stdArgs numRuns) (count_sticky (is_sticky_and_height_x 3) ).
-QuickChickWith (updMaxSuccess stdArgs numRuns) (count_sticky (is_sticky_and_height_x 4) ).
-QuickChickWith (updMaxSuccess stdArgs numRuns) (count_sticky (is_prop_and_height_x is_rl_balanced 0) ).
-QuickChickWith (updMaxSuccess stdArgs numRuns) (count_sticky (is_prop_and_height_x is_rl_balanced 1) ).
-QuickChickWith (updMaxSuccess stdArgs numRuns) (count_sticky (is_prop_and_height_x is_rl_balanced 2) ).
-QuickChickWith (updMaxSuccess stdArgs numRuns) (count_sticky (is_prop_and_height_x is_rl_balanced 3) ).
-QuickChickWith (updMaxSuccess stdArgs numRuns) (count_sticky (is_prop_and_height_x is_rl_balanced 4) ).
-QuickChickWith (updMaxSuccess stdArgs numRuns) (count_sticky (is_prop_and_height_x is_left_sticky 0) ).
-QuickChickWith (updMaxSuccess stdArgs numRuns) (count_sticky (is_prop_and_height_x is_left_sticky 1) ).
-QuickChickWith (updMaxSuccess stdArgs numRuns) (count_sticky (is_prop_and_height_x is_left_sticky 2) ).
-QuickChickWith (updMaxSuccess stdArgs numRuns) (count_sticky (is_prop_and_height_x is_left_sticky 3) ).
-QuickChickWith (updMaxSuccess stdArgs numRuns) (count_sticky (is_prop_and_height_x is_left_sticky 4) ).
-QuickChickWith (updMaxSuccess stdArgs numRuns) (count_sticky (is_prop_and_height_x is_right_sticky 0) ).
-QuickChickWith (updMaxSuccess stdArgs numRuns) (count_sticky (is_prop_and_height_x is_right_sticky 1) ).
-QuickChickWith (updMaxSuccess stdArgs numRuns) (count_sticky (is_prop_and_height_x is_right_sticky 2) ).
-QuickChickWith (updMaxSuccess stdArgs numRuns) (count_sticky (is_prop_and_height_x is_right_sticky 3) ).
-QuickChickWith (updMaxSuccess stdArgs numRuns) (count_sticky (is_prop_and_height_x is_right_sticky 4) ).
+QuickChickWith (updMaxSuccess stdArgs numRuns) (count_test is_sticky ).
+(* QuickChickWith (updMaxSuccess stdArgs numRuns) (count_test is_left_sticky ).
+QuickChickWith (updMaxSuccess stdArgs numRuns) (count_test is_right_sticky ).
+QuickChickWith (updMaxSuccess stdArgs numRuns) (count_test is_rl_balanced ).
+QuickChickWith (updMaxSuccess stdArgs numRuns) (count_test (is_height_x 0) ).
+QuickChickWith (updMaxSuccess stdArgs numRuns) (count_test (is_height_x 1) ).
+QuickChickWith (updMaxSuccess stdArgs numRuns) (count_test (is_height_x 2) ).
+QuickChickWith (updMaxSuccess stdArgs numRuns) (count_test (is_height_x 3) ).
+QuickChickWith (updMaxSuccess stdArgs numRuns) (count_test (is_height_x 4) ).
+QuickChickWith (updMaxSuccess stdArgs numRuns) (count_test (is_sticky_and_height_x 0) ).
+QuickChickWith (updMaxSuccess stdArgs numRuns) (count_test (is_sticky_and_height_x 1) ).
+QuickChickWith (updMaxSuccess stdArgs numRuns) (count_test (is_sticky_and_height_x 2) ).
+QuickChickWith (updMaxSuccess stdArgs numRuns) (count_test (is_sticky_and_height_x 3) ).
+QuickChickWith (updMaxSuccess stdArgs numRuns) (count_test (is_sticky_and_height_x 4) ).
+QuickChickWith (updMaxSuccess stdArgs numRuns) (count_test (is_prop_and_height_x is_rl_balanced 0) ).
+QuickChickWith (updMaxSuccess stdArgs numRuns) (count_test (is_prop_and_height_x is_rl_balanced 1) ).
+QuickChickWith (updMaxSuccess stdArgs numRuns) (count_test (is_prop_and_height_x is_rl_balanced 2) ).
+QuickChickWith (updMaxSuccess stdArgs numRuns) (count_test (is_prop_and_height_x is_rl_balanced 3) ).
+QuickChickWith (updMaxSuccess stdArgs numRuns) (count_test (is_prop_and_height_x is_rl_balanced 4) ).
+QuickChickWith (updMaxSuccess stdArgs numRuns) (count_test (is_prop_and_height_x is_left_sticky 0) ).
+QuickChickWith (updMaxSuccess stdArgs numRuns) (count_test (is_prop_and_height_x is_left_sticky 1) ).
+QuickChickWith (updMaxSuccess stdArgs numRuns) (count_test (is_prop_and_height_x is_left_sticky 2) ).
+QuickChickWith (updMaxSuccess stdArgs numRuns) (count_test (is_prop_and_height_x is_left_sticky 3) ).
+QuickChickWith (updMaxSuccess stdArgs numRuns) (count_test (is_prop_and_height_x is_left_sticky 4) ).
+QuickChickWith (updMaxSuccess stdArgs numRuns) (count_test (is_prop_and_height_x is_right_sticky 0) ).
+QuickChickWith (updMaxSuccess stdArgs numRuns) (count_test (is_prop_and_height_x is_right_sticky 1) ).
+QuickChickWith (updMaxSuccess stdArgs numRuns) (count_test (is_prop_and_height_x is_right_sticky 2) ).
+QuickChickWith (updMaxSuccess stdArgs numRuns) (count_test (is_prop_and_height_x is_right_sticky 3) ).
+QuickChickWith (updMaxSuccess stdArgs numRuns) (count_test (is_prop_and_height_x is_right_sticky 4) ).
 
            *)

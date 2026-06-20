@@ -34,10 +34,13 @@ in_files = [
     #     "ty-sizes=Main.sKVTree.t-4/stack_size=2/intwidth=3/spec_entropy/"
     #     "freq=2-spb=200/prop=isSTs/0.3/epochs=2000/bound=0.1/trained_Generator.v"
     # ),
+    # Path(
+    #     "tuning-output/v133_artifact/st/langsiblingderived/root_ty=Main.sKVTree.t/ty-sizes=Main.sKVTree.t-4/stack_size=1/intwidth=3/spec_entropy/freq=2-spb=200/prop=always_true/0.3/epochs=2000/bound=0.1/trained_Generator.v"
+    # ),
     Path(
-        "tuning-output/v133_artifact/st/langsiblingderived/root_ty=Main.sKVTree.t/ty-sizes=Main.sKVTree.t-4/stack_size=1/intwidth=3/spec_entropy/freq=2-spb=200/prop=always_true/0.3/epochs=2000/bound=0.1/trained_Generator.v"
-    ),
-    
+        "tuning-output/v133_artifact/st/langsiblingderived/root_ty=Main.sKVTree.t/ty-sizes=Main.sKVTree.t-10/stack_size=1/intwidth=1/spec_entropy/freq=2-spb=200/prop=isSTs/0.3/epochs=2000/bound=0.1/trained_Generator.v"
+    )
+
 
 ]
 
@@ -52,7 +55,7 @@ def parse_quickchick_output(output: str) -> list[dict[str, str]]:
             continue
 
         header = lines[0]
-        prefix = "QuickChecking (count_sticky "
+        prefix = "QuickChecking (count_test "
         if not header.startswith(prefix) or not header.endswith(")"):
             continue
 
@@ -211,10 +214,98 @@ def plot_results(rows: list[dict[str, str]], plot_path: Path) -> None:
     plt.close(fig)
 
 
-def run_one_file(in_file: Path, csv_only: bool) -> int:
+def plot_results_sticky_height(rows: list[dict[str, str]], plot_path: Path) -> None:
+    row_map = build_row_map(rows)
+
+    def get_true(test_name: str) -> int:
+        return row_map.get(test_name, {"true": 0})["true"]
+
+    bars: list[tuple[str, list[tuple[str, int]]]] = [
+        (
+            "main",
+            [
+                ("is_sticky", get_true("is_sticky")),
+            ],
+        )
+    ]
+
+    for h in range(11):  # 0 through 10
+        bars.append(
+            (
+                f"h={h}",
+                [
+                    (f"(is_height_x {h})", get_true(f"(is_height_x {h})")),
+                    (f"(is_sticky_and_height_x {h})", get_true(f"(is_sticky_and_height_x {h})")),
+                ],
+            )
+        )
+
+    fig, ax = plt.subplots(figsize=(15, 7), constrained_layout=True)
+    main_color = "#1f77b4"
+    height_colors = ["#ff7f0e", "#2ca02c"]
+    shown_labels: set[str] = set()
+
+    x_positions = list(range(len(bars)))
+    for bar_index, (bar_name, components) in enumerate(bars):
+        n_components = len(components)
+        offset_step = 0.15
+        bar_width = 0.3
+
+        for comp_index, (comp_name, value) in enumerate(components):
+            if bar_index == 0:
+                # Main bar - single bar
+                color = main_color
+                series_name = "main: is_sticky"
+            else:
+                # Height bars - paired bars
+                color = height_colors[comp_index % len(height_colors)]
+                if "is_height_x" in comp_name and "sticky_and" not in comp_name:
+                    series_name = "height: is_height_x"
+                else:
+                    series_name = "height: is_sticky_and_height_x"
+
+            if series_name in shown_labels:
+                label = "_nolegend_"
+            else:
+                label = series_name
+                shown_labels.add(series_name)
+
+            if n_components == 1:
+                # Single bar (main)
+                x_offset = 0
+            else:
+                # Paired bars (heights)
+                x_offset = (comp_index - 0.5) * offset_step
+
+            ax.bar(
+                bar_index + x_offset,
+                value,
+                width=bar_width,
+                color=color,
+                alpha=0.9,
+                edgecolor="black",
+                linewidth=1.2,
+                label=label,
+            )
+
+    ax.set_title("Height Tests: is_sticky, is_height_x and is_sticky_and_height_x (h=0 to 10)")
+    ax.set_ylabel("True count")
+    ax.set_xlabel("Test")
+    ax.set_xticks(x_positions)
+    ax.set_xticklabels([name for name, _ in bars], rotation=0)
+    ax.set_ylim(0, 1000)
+    ax.grid(axis="y", alpha=0.3)
+    ax.legend(loc="upper right", fontsize=8)
+
+    fig.savefig(plot_path, dpi=180)
+    plt.close(fig)
+
+
+def run_one_file(in_file: Path, csv_only: bool, height_plot: bool) -> int:
     out_file = in_file.with_name("qc_results.txt")
     csv_file = in_file.with_name("qc_results.csv")
     plot_file = in_file.with_name("qc_results_plot.png")
+    plot_heights_file = in_file.with_name("qc_results_heights_plot.png")
 
     if csv_only:
         if not csv_file.exists():
@@ -222,11 +313,18 @@ def run_one_file(in_file: Path, csv_only: bool) -> int:
             return 1
 
         rows = read_csv(csv_file)
-        plot_results(rows, plot_file)
-        print(f"File: {in_file}")
-        print(f"CSV-only mode: skipped coqc")
-        print(f"Read CSV from {csv_file}")
-        print(f"Wrote plot to {plot_file}")
+        if height_plot:
+            plot_results_sticky_height(rows, plot_heights_file)
+            print(f"File: {in_file}")
+            print(f"CSV mode: skipped coqc")
+            print(f"Read CSV from {csv_file}")
+            print(f"Wrote sticky height plot to {plot_heights_file}")
+        else:
+            plot_results(rows, plot_file)
+            print(f"File: {in_file}")
+            print(f"CSV mode: skipped coqc")
+            print(f"Read CSV from {csv_file}")
+            print(f"Wrote plot to {plot_file}")
         return 0
 
     try:
@@ -238,41 +336,56 @@ def run_one_file(in_file: Path, csv_only: bool) -> int:
             check=False,
         )
         output = result.stdout
-        exit_code = result.returncode
     except FileNotFoundError as error:
         output = f"Failed to run coqc: {error}\n"
-        exit_code = 127
 
     out_file.write_text(output, encoding="utf-8")
     rows = parse_quickchick_output(output)
     write_csv(csv_file, rows)
-    plot_results(rows, plot_file)
-    print(output, end="")
-    print(f"File: {in_file}")
-    print(f"Exit code: {exit_code}")
-    print(f"Wrote output to {out_file}")
-    print(f"Wrote CSV to {csv_file}")
-    print(f"Wrote plot to {plot_file}")
-    return exit_code
+    if height_plot:
+        plot_results_sticky_height(rows, plot_heights_file)
+        print(output, end="")
+        print(f"File: {in_file}")
+        print(f"Wrote output to {out_file}")
+        print(f"Wrote CSV to {csv_file}")
+        print(f"Wrote sticky height plot to {plot_heights_file}")
+    else:
+        plot_results(rows, plot_file)
+        print(output, end="")
+        print(f"File: {in_file}")
+        print(f"Wrote output to {out_file}")
+        print(f"Wrote CSV to {csv_file}")
+        print(f"Wrote plot to {plot_file}")
+    return 0
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Run QuickChick Coq files and generate CSV/plots")
     parser.add_argument(
-        "--csv-only",
+        "--csv",
         action="store_true",
         help="Skip coqc and generate plots from existing qc_results.csv files.",
     )
+    parser.add_argument(
+        "--heights",
+        action="store_true",
+        help="Generate additional sticky height plot (heights 0-10).",
+    )
+    parser.add_argument(
+        "files",
+        nargs="*",
+        type=Path,
+        help="Coq generator files to process. If not provided, processes files from in_files list.",
+    )
     args = parser.parse_args()
 
-    worst_code = 0
+    # Use provided files or fall back to in_files list
+    files_to_process = args.files if args.files else in_files
 
-    for in_file in in_files:
-        code = run_one_file(in_file, csv_only=args.csv_only)
-        if code != 0:
-            worst_code = code
+    for in_file in files_to_process:
+        run_one_file(in_file, csv_only=args.csv, height_plot=args.heights)
 
-    return worst_code
+    return 0
 
 
 if __name__ == "__main__":
